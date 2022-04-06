@@ -20,6 +20,7 @@ export default function Home({results}) {
 
   return (
   <div>
+    <h2>Hiii</h2>
 {results.map((q,index) => (
   <div key={index}>
     <h3>{q.name}</h3>
