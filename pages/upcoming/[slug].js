@@ -70,9 +70,9 @@ export default function upcomingGame({ game }) {
                 <div className="column is-half">
                   <div class="twitch">
                     <div class="twitch-video">
-                      {g.live_embed_url ? (<iframe src={`${g.live_embed_url}&parent=localhost`} frameBorder="0" allowFullscreen="true" scrolling="no" height="300" width="100%">
+                      {g.live_embed_url ? (<iframe src={`${g.live_embed_url}&parent=localhost`} frameBorder="0" allowFullScreen="true" scrolling="no" height="300" width="100%">
                       </iframe>)
-                        : <p>Sorry No Streams found please follow this link    <a href= {g.official_stream_url} className="dd" target="_blank">Watch now</a> - </p>
+                        : <p>Sorry No Streams found please follow this link    <a href= {g.official_stream_url} className="dd">Watch now</a> - </p>
                       }</div></div>
   
                 </div>

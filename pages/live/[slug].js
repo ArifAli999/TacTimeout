@@ -32,7 +32,7 @@ export default function live({ game }) {
 
             <div>
                 {game.map((o) => (
-                    <p>{o.name}</p>
+                    <p key={o.id}>{o.name}</p>
                 ))}
             </div>
 
