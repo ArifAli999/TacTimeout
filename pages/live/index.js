@@ -3,14 +3,15 @@ import react, {useState, useEffect} from "react";
 import { useRouter } from 'next/router';
 
 
-export async function ServerSideProps({ res }) {
+export async function getServerSideProps({ res }) {
     try {
         const result = await fetch(`https://api.pandascore.co/matches/running??sort=&page=1&per_page=10&&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
         const data = await result.json();
 
         return {
-            props: { game: data },
-            revalidate: 10 // 10 seconds 
+            props: { game: data }
+         
+            
         };
     } catch (error) {
         res.statusCode = 404;
