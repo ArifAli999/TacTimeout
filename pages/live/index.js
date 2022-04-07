@@ -23,7 +23,7 @@ const liveGames = ({ results }) => {
             <div className="game-container">
                 <h2>Live Games NOW - </h2>
                 {results.map((q) => (
-                    <Link href = {'/live/' + q.slug}  key={q.id}>
+                    <Link href = {'/live/' + q.slug}  key={q.slug}>
                        <a className="live_link"> <h3>{q.name}</h3></a>
                     </Link>
                 ))}

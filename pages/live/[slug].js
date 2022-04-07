@@ -21,15 +21,22 @@ export const getStaticProps = async (context) => {
 
     return {
         props: {
-         game: data
+            game: data
         }
     }
 }
-export default function live({game}) {
+export default function live({ game }) {
     return (
-      <div>
-          <h2> Single Game deets.</h2>
-            {game.id}
-      </div>
+        <div>
+            <h2> Single Game deets.</h2>
+
+            <div>
+                {game.map((o) => (
+                    <p>{o.name}</p>
+                ))}
+            </div>
+
+
+        </div>
     )
-  }
+}
