@@ -19,7 +19,7 @@ const upcomingGames = ({ game }) => {
                 <h2>Upcoming Games  - </h2>
                 {game.map((q) => (
                     
-                       <a className="live_link"> <h3>{q.name}</h3></a>
+                       <a className="live_link" key={q.id}> <h3>{q.name}</h3></a>
                   
                 ))}
             </div>
