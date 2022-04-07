@@ -1,4 +1,7 @@
 import Link from "next/link";
+import react, {useState, useEffect} from "react";
+import { useRouter } from 'next/router';
+
 
 export async function getStaticProps({ res }) {
     try {
@@ -18,6 +21,15 @@ export async function getStaticProps({ res }) {
 
 
 const upcomingGames = ({ game }) => {
+    const [isRefreshing, setIsRefreshing] = useState(false);
+    const router = useRouter();
+    const refreshData = () => {
+      router.replace(router.asPath);
+      setIsRefreshing(true);
+    };
+    useEffect(() => {
+      setIsRefreshing(false);
+    }, [game]);
     return (
 
             <div className="container">
