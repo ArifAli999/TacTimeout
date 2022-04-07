@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { useState } from "react";
 
 export const getStaticProps = async () => {
 
@@ -16,7 +15,6 @@ export const getStaticProps = async () => {
 
 
 const upcomingGames = ({ game }) => {
-    const [pageNumber, setPageNumber] = useState(1)
 
 
 
