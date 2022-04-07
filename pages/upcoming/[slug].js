@@ -33,7 +33,7 @@ export default function upcomingGame({ game }) {
   
   
   
-          <div className="container" >
+          <div className="container" key={g.id} >
   
   
             <div className="inner-box" key={g.slug}>
