@@ -1,17 +1,20 @@
 import Link from "next/link";
 
-export const getServerSideProps = async () => {
+export async function getStaticProps({ res }) {
+    try {
+        const result = await fetch(`https://api.pandascore.co/matches/running??sort=&page=1&per_page=10&&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
+        const data = await result.json();
 
-    const res = await fetch(`https://api.pandascore.co/matches/running?&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0 `);
-    const data = await res.json();
-    
-
-    return {
-        props: {
-         game: data
-        }
+        return {
+            props: { game: data },
+            revalidate: 10 // 10 seconds 
+        };
+    } catch (error) {
+        res.statusCode = 404;
+        return { props: {} };
     }
 }
+
 
 
 const upcomingGames = ({ game }) => {
