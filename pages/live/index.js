@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
 
     const res = await fetch(`https://api.pandascore.co/matches/running?&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0 `);
     const data = await res.json();
