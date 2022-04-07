@@ -1,6 +1,4 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+
 
 export async function getServerSideProps(context) {
   // Fetch data from external API
@@ -20,12 +18,7 @@ export default function Home({results}) {
 
   return (
   <div>
-    <h2>Hiii</h2>
-{results.map((q,index) => (
-  <div key={index}>
-    <h3>{q.name}</h3>
-  </div>
-))}
+    <p> This is the home page yeah.</p>
   </div>
   )
 }
