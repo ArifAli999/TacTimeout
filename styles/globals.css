@@ -244,5 +244,9 @@ span.scores {
   border-radius: 10px;
   margin-top: 8%;
 }
-
+@media (max-width: 600px) {
+  span.is-pulled-right, span.is-pulled-left {
+    font-size: 1vh;
+}
+}
 
