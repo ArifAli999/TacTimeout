@@ -63,13 +63,13 @@ export default function upcomingGame({ game }) {
                   <div className="dark alt"><span className="is-pulled-left">Tournament</span>  <span className="is-pulled-right"> {g.tournament && g.tournament.name} | {g.match_type.replaceAll('_', ' ').toUpperCase()} </span></div>
                   <div className="dark"><span className="is-pulled-left">Series</span>  <span className="is-pulled-right"> {g.serie.full_name} | {g.serie.tier.toUpperCase()} </span></div>
                   <div className="dark alt"><span className="is-pulled-left">Teams</span>  <span className="is-pulled-right">   {g.opponents.map((o) => o.opponent.name).join(" vs ")}  </span></div>
-                  <a href= {g.official_stream_url} className="dd" target="_blank">Watch now</a>
+                  <a href= {g.official_stream_url} className="dd">Watch now</a>
   
                 </div>
   
                 <div className="column is-half">
-                  <div class="twitch">
-                    <div class="twitch-video">
+                  <div className="twitch">
+                    <div className="twitch-video">
                       {g.live_embed_url ? (<iframe src={`${g.live_embed_url}&parent=localhost`} frameBorder="0" allowFullScreen="true" scrolling="no" height="300" width="100%">
                       </iframe>)
                         : <p>Sorry No Streams found please follow this link    <a href= {g.official_stream_url} className="dd">Watch now</a> - </p>
