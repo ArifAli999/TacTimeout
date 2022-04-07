@@ -1,8 +1,9 @@
 import Link from "next/link";
+import { useState } from "react";
 
 export const getStaticProps = async () => {
 
-    const res = await fetch(`https://api.pandascore.co/matches/upcoming?&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0 `);
+    const res = await fetch(`https://api.pandascore.co/matches/upcoming??sort=&page=1&per_page=10&&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0 `);
     const data = await res.json();
     
 
@@ -15,9 +16,14 @@ export const getStaticProps = async () => {
 
 
 const upcomingGames = ({ game }) => {
+    const [pageNumber, setPageNumber] = useState(1)
+
+
+
     return (
 
             <div className="container">
+               
                 <h2>Upcoming Games  - </h2>
                 <div className="columns is-multiline">
                 {game.map(q => (

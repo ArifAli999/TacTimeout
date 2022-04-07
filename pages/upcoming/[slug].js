@@ -28,6 +28,7 @@ export const getStaticProps = async (context) => {
 export default function upcomingGame({ game }) {
     return (
         <div className="container is-fluid">
+          
         {game.map((g) => (
   
   

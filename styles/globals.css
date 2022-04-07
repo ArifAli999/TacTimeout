@@ -210,10 +210,7 @@ a {
   box-sizing: border-box;
 }
 
-.content {
-  padding: 2%;
-  /* color: #fff !important; */
-}
+
 
 .inner-box {
   text-align: center;
@@ -248,5 +245,14 @@ span.scores {
   span.is-pulled-right, span.is-pulled-left {
     font-size: 1vh;
 }
+
+.inner {
+  background: rgb(33 30 30 / 98%);
+}
 }
 
+.maincontainer {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 2%;
+}

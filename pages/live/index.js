@@ -13,19 +13,28 @@ export const getStaticProps = async () => {
     }
 }
 
-const liveGames = ({ game }) => {
+
+const upcomingGames = ({ game }) => {
     return (
-        <div>
-            <div className="game-container">
-                <h2>Live Games NOW - </h2>
-                {game.map((q) => (
-                    <Link href = {'/live/' + q.slug}  key={q.slug}>
-                       <a className="live_link"> <h3>{q.name}</h3></a>
-                    </Link>
+
+            <div className="container">
+                <h2>Live Games  - </h2>
+                <div className="columns is-multiline">
+                {game.map(q => (
+                    <div className="column is-half" key={q.id}>
+                        <div className="inner">
+                        <div className="inner__box">
+                     <Link href = {'/live/' + q.slug}  key={q.slug}>
+                       <a className="h2link" key={q.slug}> {q.name}</a>
+                  </Link></div>
+                  </div>
+                  </div>
                 ))}
+                </div>
             </div>
-        </div>
-    )
+     
+   
+    );
 }
 
-export default liveGames;
+export default upcomingGames;
