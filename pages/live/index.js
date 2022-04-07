@@ -20,7 +20,7 @@ export async function getStaticProps({ res }) {
 
 
 
-const upcomingGames = ({ game }) => {
+const UpcomingGames = ({ game }) => {
     const [isRefreshing, setIsRefreshing] = useState(false);
     const router = useRouter();
     const refreshData = () => {
@@ -52,4 +52,4 @@ const upcomingGames = ({ game }) => {
     );
 }
 
-export default upcomingGames;
+export default UpcomingGames;
