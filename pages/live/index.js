@@ -13,12 +13,12 @@ export const getStaticProps = async () => {
     }
 }
 
-const liveGames = ({ results }) => {
+const liveGames = ({ game }) => {
     return (
         <div>
             <div className="game-container">
                 <h2>Live Games NOW - </h2>
-                {results.map((q) => (
+                {game.map((q) => (
                     <Link href = {'/live/' + q.slug}  key={q.slug}>
                        <a className="live_link"> <h3>{q.name}</h3></a>
                     </Link>
