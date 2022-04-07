@@ -3,7 +3,7 @@ import react, {useState, useEffect} from "react";
 import { useRouter } from 'next/router';
 
 
-export async function getStaticProps({ res }) {
+export async function ServerSideProps({ res }) {
     try {
         const result = await fetch(`https://api.pandascore.co/matches/running??sort=&page=1&per_page=10&&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
         const data = await result.json();
@@ -21,15 +21,7 @@ export async function getStaticProps({ res }) {
 
 
 const UpcomingGames = ({ game }) => {
-    const [isRefreshing, setIsRefreshing] = useState(false);
-    const router = useRouter();
-    const refreshData = () => {
-      router.replace(router.asPath);
-      setIsRefreshing(true);
-    };
-    useEffect(() => {
-      setIsRefreshing(false);
-    }, [game]);
+  
     return (
 
             <div className="container">
