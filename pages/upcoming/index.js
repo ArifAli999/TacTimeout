@@ -3,14 +3,14 @@ import Moment from 'react-moment';
 
 
 
-export async function getStaticProps ({ res }) {
+export async function getServerSideProps ({ res }) {
  
         const result = await fetch(`https://api.pandascore.co/matches/upcoming??sort=&page=1&per_page=10&&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
         const data = await result.json();
 
         return {
             props: { game: data },
-            revalidate: 10, // In seconds
+           
 
         
         };
