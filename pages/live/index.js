@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Moment from 'react-moment';
 
 
 
@@ -33,7 +34,11 @@ const UpcomingGames = ({ game }) => {
                         <div className="inner__box">
                      <Link href = {'/live/' + q.slug}  key={q.slug}>
                        <a className="h2link" key={q.slug}> {q.name}</a>
-                  </Link></div>
+                  </Link>
+                  <span className="is-pulled-right tag is-danger">
+                    <Moment fromNow>{q.scheduled_at}</Moment>  
+                    </span>
+                  </div>
                   </div>
                   </div>
                 ))}

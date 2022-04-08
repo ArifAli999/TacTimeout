@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Moment from 'react-moment';
+
 
 
 export async function getServerSideProps ({ res }) {
@@ -36,7 +38,12 @@ const upcomingGames = ({ game }) => {
                         <div className="inner__box">
                      <Link href = {'/upcoming/' + q.slug}  key={q.slug}>
                        <a className="h2link" key={q.slug}> {q.name}</a>
-                  </Link></div>
+                  </Link>
+                  
+                  <span className="is-pulled-right tag is-danger">
+                    <Moment fromNow>{q.scheduled_at}</Moment>  
+                    </span>
+                  </div>
                   </div>
                   </div>
                 ))}
