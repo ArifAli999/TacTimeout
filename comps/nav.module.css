@@ -1,0 +1,11 @@
+.navbar {
+    text-align: right;
+    background: black;
+    padding: 1.3rem 2rem;
+}
+
+li.navli {
+    list-style: none;
+    display: inline;
+}
+

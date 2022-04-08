@@ -1,6 +1,5 @@
 import Link from "next/link";
-import react, {useState, useEffect} from "react";
-import { useRouter } from 'next/router';
+
 
 
 export async function getServerSideProps({ res }) {

@@ -34,13 +34,13 @@ export default function upcomingGame({ game }) {
   
   
   
-          <div className="container" key={g.id} >
+          <div className="container" key={g.slug} >
   
   
             <div className="inner-box" key={g.slug}>
               {/** Fetch team and display their corresponding score - A bit of code repition :( */}
               <div className="score-board-min columns is-mobile is-multiline">
-                <div className="column is-full"> {g.opponents.slice(0, -1).map((o) => <span className="team" key={o.id}>{o.opponent.name}</span>)}
+                <div className="column is-full"> {g.opponents.slice(0, -1).map((o) => <span className="team" key={o.slug}>{o.opponent.name}</span>)}
                   {g.results.slice(0, -1).map((res, i) => (
                     <span className="scores" key={i}>{res.score}</span>
                   ))}</div>
@@ -48,7 +48,7 @@ export default function upcomingGame({ game }) {
                 <div className="column">
                   {g.opponents.slice(-1).map((o) => <span className="team" key={o.id}>{o.opponent.name}</span>)}
                   {g.results.slice(-1).map((res, i) => (
-                    <span className="scores" key={i}><div>{res.score}</div></span>
+                    <span className="scores" key={res.id}><div>{res.score}</div></span>
                   ))}
   
                 </div>
@@ -63,7 +63,7 @@ export default function upcomingGame({ game }) {
                   <div className="dark"><span className="is-pulled-left">Game:</span>  <span className="is-pulled-right">  {g.videogame && g.videogame.name} </span></div>
                   <div className="dark alt"><span className="is-pulled-left">Tournament</span>  <span className="is-pulled-right"> {g.tournament && g.tournament.name} | </span></div>
                   <div className="dark"><span className="is-pulled-left">Series</span>  <span className="is-pulled-right"> {g.serie.full_name} | {g.serie.tier.toUpperCase()} </span></div>
-                  <div className="dark alt"><span className="is-pulled-left">Teams</span>  <span className="is-pulled-right">   {g.opponents.map((o) => o.opponent.name).join(" vs ")}  </span></div>
+                  <div className="dark alt"><span className="is-pulled-left">Teams</span>  <span className="is-pulled-right">   {g.opponents.map((o,i) =><p key={i}>o.opponent.name</p> ).join(" vs ")}  </span></div>
              
   
                 </div>

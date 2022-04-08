@@ -1,6 +1,7 @@
-@import 'bulma/css/bulma.css';
+@import "bulma/css/bulma.css";
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -11,7 +12,6 @@ html, body {
   background-color: rgb(117 91 117 / 59%);
   background-blend-mode: color-burn;
 }
-
 
 .scoreBox {
   background: #000;
@@ -61,12 +61,7 @@ a.h2link {
   color: #fff;
   transition: ease-in 0.3s opacity;
   font-weight: 600;
-  background-image: linear-gradient(
-    to right,
-    #ffe08a,
-    #f14668 50%,
-    #fff 50%
-  );
+  background-image: linear-gradient(to right, #ffe08a, #f14668 50%, #fff 50%);
   background-size: 200% 100%;
   background-position: -100%;
   display: inline-block;
@@ -80,7 +75,7 @@ a.h2link {
   text-overflow: ellipsis;
 }
 a2.h2link:before {
-  content: '';
+  content: "";
   background: #54b3d6;
   display: block;
   position: absolute;
@@ -156,18 +151,19 @@ button.uk-button.menu_but.is-pulled-right {
   opacity: 0.6;
 }
 
-
-.uk-link-toggle:hover .uk-link, .uk-link:hover, a:hover {
-   text-decoration: none; 
+.uk-link-toggle:hover .uk-link,
+.uk-link:hover,
+a:hover {
+  text-decoration: none;
 }
 
 a.h2link:hover {
   background-position: 0;
- }
- 
- a.h2link:hover::before {
-   width:100%;
- }
+}
+
+a.h2link:hover::before {
+  width: 100%;
+}
 
 button.uk-button.menu_but.is-pulled-right:hover {
   opacity: 1;
@@ -200,7 +196,6 @@ span.is-pulled-right.tag.is-danger {
   text-transform: uppercase;
 }
 
-
 a {
   color: #fff;
   text-decoration: none;
@@ -209,8 +204,6 @@ a {
 * {
   box-sizing: border-box;
 }
-
-
 
 .inner-box {
   text-align: center;
@@ -242,17 +235,36 @@ span.scores {
   margin-top: 8%;
 }
 @media (max-width: 600px) {
-  span.is-pulled-right, span.is-pulled-left {
+  span.is-pulled-right,
+  span.is-pulled-left {
     font-size: 1vh;
-}
+  }
 
-.inner {
-  background: rgb(33 30 30 / 98%);
-}
+  .inner {
+    background: rgb(33 30 30 / 98%);
+  }
 }
 
 .maincontainer {
   margin-top: 2rem;
   margin-bottom: 2rem;
   padding: 2%;
+}
+
+.activee {
+  padding: 1.3rem;
+  border-bottom: 2px solid purple;
+  transition: ease-in 0.22s border-bottom;
+}
+
+a.lia {
+  list-style: none;
+  display: inline;
+  padding: 1.3rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  margin-right: 2rem;
+  text-transform: capitalize;
+  font-weight: 200;
+  -webkit-font-smoothing: subpixel-antialiased;
 }
