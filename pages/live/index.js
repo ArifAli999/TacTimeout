@@ -9,7 +9,8 @@ export async function getServerSideProps({ res }) {
         const data = await result.json();
 
         return {
-            props: { game: data },
+            props: { game: data }
+            
            
             
         };
@@ -36,7 +37,7 @@ const UpcomingGames = ({ game }) => {
                        <a className="h2link" key={q.slug}> {q.name}</a>
                   </Link>
                   <span className="is-pulled-right tag is-danger">
-                    <Moment fromNow>{q.scheduled_at}</Moment>  
+                                 LIVE
                     </span>
                   </div>
                   </div>
