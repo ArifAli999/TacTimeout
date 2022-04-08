@@ -9,8 +9,8 @@ export async function getStaticProps({ res }) {
         const data = await result.json();
 
         return {
-            props: { game: data }
-         
+            props: { game: data },
+            reValidate: 10
             
         };
     } catch (error) {
