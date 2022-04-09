@@ -1,3 +1,6 @@
+import Image from 'next/image';
+
+
 export const getStaticPaths = async () => {
     const res = await fetch(`https://api.pandascore.co/matches/running?sort=&page=1&per_page=50&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
     const data = await res.json();
@@ -40,9 +43,9 @@ export default function live({ game }) {
 
 
     <div className="inner-box" key={g.slug}>
-      {/** Fetch team and display their corresponding score - A bit of code repition :( */}
+      {/** Fetch team and display their corresponding score - */}
       <div className="score-board-min columns is-mobile is-multiline">
-        <div className="column is-full"> {g.opponents.slice(0, -1).map((o) => <span className="team" key={o.id}>{o.opponent.name}</span>)}
+        <div className="column is-full"> {g.opponents.slice(0, -1).map((o) => <span className="team" key={o.id}><img src={o.opponent.image_url} width="30" height="30" className='team-img'></img>{o.opponent.name}</span>)}
           {g.results.slice(0, -1).map((res, i) => (
             <span className="scores" key={i}>{res.score}</span>
           ))}</div>
