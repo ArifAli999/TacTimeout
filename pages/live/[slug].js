@@ -38,7 +38,6 @@ export const getStaticProps = async (context) => {
 
 export default function live({ game, plays }) {
 
-console.log(plays)
   return (
     <div className="container">
  

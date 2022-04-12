@@ -3,7 +3,7 @@ import Moment from 'react-moment';
 import Link from 'next/link';
 import styles from './Lol.module.css'
 
-function Lol( {lolres}) {
+function Lol( {lolres = []}) {
    
     return (
         <div className='container is-fluid'>
@@ -32,17 +32,7 @@ function Lol( {lolres}) {
     )
 }
 
-export async function getStaticProps() {
 
-   
-  const lol = await fetch(`https://api.pandascore.co/matches/upcoming?filter[videogame]=league-of-legends&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
-  const loldata = await lol.json();
-
-  return {
-      props: {lolres: loldata },
-  };
-
-}
 
 
 

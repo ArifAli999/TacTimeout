@@ -2,7 +2,7 @@ import React from 'react';
 import Moment from 'react-moment';
 import Link from 'next/link';
 
-function Dota( {dotres}) {
+function Dota( {dotres = []}) {
     
     return (
         <div className='container is-fluid'>
@@ -29,17 +29,7 @@ function Dota( {dotres}) {
     )
 }
 
-export async function getStaticProps() {
 
-   
-    const dotaresult = await fetch(`https://api.pandascore.co/matches/upcoming?filter[videogame]=dota-2&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
-    const dotdata = await dotaresult.json();
-
-    return {
-        props: {dotres: dotdata },
-    };
-
-}
 
 
 export default Dota;
