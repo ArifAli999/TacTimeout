@@ -23,7 +23,7 @@ export const getStaticProps = async (context) => {
   const players = await fetch(`https://api.pandascore.co/matches/${slug}/opponents?token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
   const data = await res.json();
   const data2 = await players.json();
-  console.log(data2)
+
 
   return {
     props: {
