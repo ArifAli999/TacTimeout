@@ -83,19 +83,17 @@ const GamesPage = ({ valres, csres, dotres, lolres }) => {
 
 export async function getStaticProps() {
 
-    const valresult = await fetch(`https://api.pandascore.co/matches/upcoming?filter[videogame]=valorant&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
     const csresult = await fetch(`https://api.pandascore.co/matches/upcoming?filter[videogame]=cs-go&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
     const dotaresult = await fetch(`https://api.pandascore.co/matches/upcoming?filter[videogame]=dota-2&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
     const lolresult = await fetch(`https://api.pandascore.co/matches/upcoming?filter[videogame]=league-of-legends&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
 
 
-    const valdata = await valresult.json();
     const csdata = await csresult.json();
     const dotdata = await dotaresult.json();
     const loldata = await lolresult.json();
 
     return {
-        props: { valres: valdata, csres: csdata, dotres: dotdata, lolres: loldata },
+        props: { csres: csdata, dotres: dotdata, lolres: loldata },
     };
 
 }

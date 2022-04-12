@@ -35,7 +35,7 @@ export async function getStaticProps() {
 
   return {
     props: { valres: valdata},
-    fallback: 'blocking'
+    
 };
 
 }
