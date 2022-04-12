@@ -41,29 +41,22 @@ export default function live({ game, plays }) {
 console.log(plays)
   return (
     <div className="container">
-      {plays.opponents.slice(0,-1).map((y) => (
-        <h1 key={y.id}>
-
-          {y.players.map((play) => (
-            <p key={play.id}>{play.name}</p>
-          ))}
-        </h1>
-))}
+ 
       <h2> Single Game deets.</h2>
       {game.map((g) => (
-        <div className="container">
+        <div className="container" key={g.id}>
 
 
-          <div className="inner-box" key={g.slug}>
+          <div className="inner-box">
             {/** Fetch team and display their corresponding score - */}
             <div className="score-board-min columns is-mobile is-multiline">
-              <div className="column is-full"> {g.opponents.slice(0, -1).map((o) => <span className="team" key={o.id}><img src={o.opponent.image_url} width="30" height="30" className='team-img'></img>{o.opponent.name}</span>)}
+              <div className="column is-full"> {g.opponents.slice(0, -1).map((o) => <span className="team" key={o.opponent.name}><img src={o.opponent.image_url} width="30" height="30" className='team-img'></img>{o.opponent.name}</span>)}
                 {g.results.slice(0, -1).map((res, i) => (
                   <span className="scores" key={res.id}>{res.score}</span>
                 ))}</div>
 
               <div className="column">
-                {g.opponents.slice(-1).map((o) => <span className="team" key={o.id}>{o.opponent.name}</span>)}
+                {g.opponents.slice(-1).map((o) => <span className="team" key={o.opponent.name}>{o.opponent.name}</span>)}
                 {g.results.slice(-1).map((res, i) => (
                   <span className="scores" key={res.id}><div>{res.score}</div></span>
                 ))}
