@@ -62,7 +62,7 @@ const GamesPage = ({ valres, csres, dotres, lolres }) => {
                 </div>
                 <div>
                     <section className="tab-content">
-                        <Valorant valres={valres} />
+                        <Valorant />
                     </section>
 
                     <section className="tab-content">
