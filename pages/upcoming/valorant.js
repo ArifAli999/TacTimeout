@@ -28,19 +28,7 @@ function Valorant( {valres}) {
         </div>
     )
 }
-export async function getStaticProps() {
 
-  const valresult = await fetch(`https://api.pandascore.co/matches/upcoming?filter[videogame]=valorant&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
- 
-
-  const valdata = await valresult.json();
-  
-
-  return {
-      props: { valres: valdata},
-  };
-
-}
 
 
 export default Valorant;
