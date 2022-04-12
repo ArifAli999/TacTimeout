@@ -1,0 +1,16 @@
+    .lolbox {
+      background: rgb(31 28 28 / 70%);
+      box-shadow: 0 8px 32px 0 rgb(10 11 14 / 66%);
+      border-radius: 0px;
+      border:  1px solid rgb(138 131 235);
+      border-radius: 7px;
+      padding: 1rem;
+    }
+
+    .inner {
+        color: #000;
+        font-weight: 200;
+        -webkit-font-smoothing: antialiased;
+        border-radius: 7px;
+        background: rgb(0 2 1);
+    }

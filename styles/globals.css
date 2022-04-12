@@ -42,7 +42,7 @@ a {
   background: rgb(255 255 255 / 27%);
   box-shadow: 0 8px 32px 0 rgb(10 11 14 / 66%);
   border-radius: 0px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 0px solid rgba(255, 255, 255, 0.18);
   border-radius: 7px;
 }
 
@@ -73,6 +73,7 @@ a.h2link {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  margin-top: 1%;
 }
 a2.h2link:before {
   content: "";
@@ -187,13 +188,13 @@ h2.h2__whiteuk-text-large {
 
 .inner__box {
   padding: 1rem;
-  margin-top: 1%;
 }
 
 span.is-pulled-right.tag.is-danger {
   margin-right: 2%;
   font-weight: 600;
   text-transform: uppercase;
+  margin-top: 1%;
 }
 
 a {
@@ -206,8 +207,6 @@ a {
 }
 
 .inner-box {
-  text-align: center;
-  margin-top: 5% !important;
   width: 80%;
   margin: 0 auto;
 }
@@ -267,4 +266,123 @@ a.lia {
   text-transform: capitalize;
   font-weight: 200;
   -webkit-font-smoothing: subpixel-antialiased;
+}
+
+div#Rainbow\ 6\ Siege {
+  border-left: 5px solid #ff5740;
+  border-radius: 7px;
+}
+
+div#Dota\ 2 {
+  border-left: 5px solid #732835;
+  border-radius: 7px;
+}
+div#CS\:GO {
+  border-left: 5px solid #320f0f;
+  border-radius: 7px;
+}
+.teamblock {
+  background: #530c90;
+  padding: 0.4rem 0.8rem;
+  font-weight: 800;
+  /* text-align: center; */
+  color: #fff;
+  line-height: 2;
+}
+
+.teamblock.alt {
+  background: peru;
+}
+
+.gameCat {
+  background: #000;
+  color: #000;
+  font-weight: 200;
+  -webkit-font-smoothing: antialiased;
+  background: rgb(0 0 0 / 81%);
+  box-shadow: 0 8px 32px 0 rgb(10 11 14 / 66%);
+  border-radius: 0px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 7px;
+}
+.gameCat_inner {
+  padding: 2rem 1rem;
+  color: #fff;
+  font-weight: 800;
+  text-align: center;
+}
+
+.gameCat.val {
+  background: rgb(128 0 128 / 79%);
+}
+
+.gameCat.cs {
+  background: rgb(112 22 22 / 80%);
+}
+
+.react-tabs__tab:focus:after {
+  background: none !important;
+}
+a.gamelinks {
+  color: #fff;
+  font-weight: 600;
+  /* background: pink; */
+}
+
+#tabs-with-content .tabs:not(:last-child) {
+  margin-bottom: 0;
+}
+
+#tabs-with-content .tab-content {
+  padding: 1rem;
+  display: none;
+  transition: ease-in 2s display;
+}
+
+#tabs-with-content .tab-content.is-active {
+  display: block;
+
+  transition: ease-in 2s display;
+}
+
+.tabs li.is-active a {
+  color: #fff;
+  background: #e62de6;
+}
+
+ul.tab-ul {
+  margin-bottom: 2%;
+  padding: 1rem;
+}
+
+.tabs a {
+  border-bottom: 0px;
+}
+.tabs.is-toggle li.is-active a {
+  background-color: #f41ec7;
+  color: #fff;
+  z-index: 1;
+  border-color: #f41ec7;
+}
+
+
+.tabs.is-toggle li.is-active a {
+  background-color: auto;
+  border-color: auto;
+  color: #000;
+  z-index: 1;
+}
+
+.tabs.is-toggle a {
+  border-color: #e42aea;
+  border-style: solid;
+  border-width: 1px;
+  margin-bottom: 0;
+  position: relative;
+}
+.tabs.is-toggle a:hover {
+  background-color: rgb(228 42 234 / 48%);
+  border-color: #e42aea;
+  z-index: 2;
+  color: #fff;
 }
