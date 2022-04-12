@@ -239,6 +239,11 @@ span.scores {
     font-size: 1vh;
   }
 
+  a.h2link{
+    width: auto;
+    font-size: 1vh;
+  }
+
   .inner {
     background: rgb(33 30 30 / 98%);
   }
