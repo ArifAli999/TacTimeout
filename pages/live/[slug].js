@@ -41,7 +41,7 @@ export default function live({ game, plays }) {
   return (
     <div className="container">
  
-      <h2> Single Game deets.</h2>
+
       {game.map((g) => (
         <div className="container" key={g.id}>
 

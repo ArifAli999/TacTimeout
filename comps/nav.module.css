@@ -6,6 +6,14 @@
 
 li.navli {
     list-style: none;
-    display: inline;
+
 }
+
+
+
+a.nava{
+    display: flex;
+}
+
+
 

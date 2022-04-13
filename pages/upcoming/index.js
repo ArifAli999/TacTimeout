@@ -4,7 +4,6 @@ import Valorant from "./valorant";
 import Counter from "./csgo";
 import Dota from "./dota";
 import Lol from "./Lol";
-
 const GamesPage = ({ valres, csres, dotres, lolres }) => {
 
 
@@ -62,15 +61,15 @@ const GamesPage = ({ valres, csres, dotres, lolres }) => {
                 </div>
                 <div>
                     <section className="tab-content">
-                        <Valorant valres={valres} />
+         
                     </section>
 
                     <section className="tab-content">
-                        <Counter csres={csres} />
+                       
                     </section>
 
                     <section className="tab-content">
-                        <Dota dotres={dotres}/>
+                       
                     </section>
                     
                 </div>
@@ -79,21 +78,6 @@ const GamesPage = ({ valres, csres, dotres, lolres }) => {
     )
 }
 
-export async function getStaticProps() {
 
-    const valresult = await fetch(`https://api.pandascore.co/matches/upcoming?filter[videogame]=valorant&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
-    const csresult = await fetch(`https://api.pandascore.co/matches/upcoming?filter[videogame]=cs-go&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
-    const dotaresult = await fetch(`https://api.pandascore.co/matches/upcoming?filter[videogame]=dota-2&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
-
-
-    const valdata = await valresult.json();
-    const csdata = await csresult.json();
-    const dotdata = await dotaresult.json();
-
-    return {
-        props: { valres: valdata, csres: csdata, dotres: dotdata },
-    };
-
-}
 
 export default GamesPage;

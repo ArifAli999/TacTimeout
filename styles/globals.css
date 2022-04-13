@@ -255,13 +255,13 @@ span.scores {
   padding: 2%;
 }
 
-.activee {
+/**.activee {
   padding: 1.3rem;
   border-bottom: 2px solid purple;
   transition: ease-in 0.22s border-bottom;
-}
+}**/
 
-a.lia {
+/**a.lia {
   list-style: none;
   display: inline;
   padding: 1.3rem;
@@ -271,7 +271,7 @@ a.lia {
   text-transform: capitalize;
   font-weight: 200;
   -webkit-font-smoothing: subpixel-antialiased;
-}
+}**/
 
 div#Rainbow\ 6\ Siege {
   border-left: 5px solid #ff5740;
