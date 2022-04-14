@@ -44,7 +44,7 @@ export async function getServerSideProps() {
 
     return {
         props: { dotres: data },
-        revalidate: 10
+  
     };
 
 }

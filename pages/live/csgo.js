@@ -34,7 +34,7 @@ function CsGo({ csres }) {
     )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
 
     const csresult = await fetch(`https://api.pandascore.co/matches/running?filter[videogame]=cs-go&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
 
@@ -44,7 +44,7 @@ export async function getStaticProps() {
 
     return {
         props: { csres: data },
-        revalidate: 10
+       
     };
 
 }
