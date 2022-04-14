@@ -34,7 +34,7 @@ function Valorant({ dotres }) {
     )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
 
     const dotaresult = await fetch(`https://api.pandascore.co/matches/upcoming?filter[videogame]=valorant&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
 
@@ -43,7 +43,8 @@ export async function getServerSideProps() {
 
 
     return {
-        props: { dotres: data }
+        props: { dotres: data },
+        revalidate: 10// In seconds
     };
 
 }
