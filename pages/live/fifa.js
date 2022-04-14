@@ -34,7 +34,7 @@ function FifaLive({ fifares }) {
     )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
 
     const fifaresult = await fetch(`https://api.pandascore.co/matches/running?filter[videogame]=fifa&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
 

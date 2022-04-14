@@ -34,7 +34,7 @@ function DotLive({ dotres }) {
     )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
 
     const dotaresult = await fetch(`https://api.pandascore.co/matches/running?filter[videogame]=dota-2&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
 
