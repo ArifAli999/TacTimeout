@@ -43,7 +43,7 @@ export async function getServerSideProps() {
 
 
     return {
-        props: { dotres: data },
+        props: { dotres: data }
       
     };
 

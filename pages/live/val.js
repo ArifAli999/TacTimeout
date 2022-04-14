@@ -34,7 +34,7 @@ function Valorant({ valres }) {
     )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
 
     const valresult = await fetch(`https://api.pandascore.co/matches/running?filter[videogame]=valorant&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
 
