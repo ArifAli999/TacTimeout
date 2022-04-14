@@ -43,7 +43,8 @@ export async function getStaticProps() {
 
 
     return {
-        props: { dotres: data }
+        props: { dotres: data },
+        revalidate: 10
     };
 
 }

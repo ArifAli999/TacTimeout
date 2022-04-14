@@ -43,7 +43,8 @@ export async function getStaticProps() {
 
 
     return {
-        props: { csres: data }
+        props: { csres: data },
+        revalidate: 10
     };
 
 }
