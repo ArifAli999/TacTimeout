@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 
-export const getStaticPaths = async () => {
+export const getStaticPaths = async ({data = []}) => {
   const res = await fetch(`https://api.pandascore.co/matches/running?sort=&page=1&per_page=50&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
   const data = await res.json();
 
