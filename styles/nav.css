@@ -1,0 +1,164 @@
+ul.uk-nav-default.uk-nav-parent-icon.uk-nav {
+  margin-top: 5rem;
+  background: rgb(11 10 10 / 71%);
+}
+
+@media (min-width: 960px) .uk-offcanvas-bar {
+  left: -350px;
+  width: 350px;
+  padding: 0px !important;
+}
+
+.uk-offcanvas-bar {
+  padding: 0px !important;
+  background: #000;
+}
+
+li.uk-parent {
+  padding: 0rem 0rem;
+  border-bottom: 2px solid rgb(15 14 15 / 80%);
+  color: #fff !important;
+}
+li.uk-nav > a {
+  color: #fff !important;
+}
+ul.uk-nav-sub {
+  padding: 0 !important;
+}
+
+li.uk-nav {
+  padding: 1rem 1rem;
+  border-bottom: 2px solid rgb(15 14 15 / 80%);
+  color: #fff !important;
+}
+
+a.parentLink {
+  padding: 1rem 1.3rem !important;
+  border-bottom: 2px solid rgb(15 14 15 / 80%);
+  color: #fff !important;
+}
+
+li.sub-links {
+  padding: 1rem 1.8rem;
+  border-bottom: 1px solid rgb(20 18 18 / 83%);
+  color: #fff !important;
+  opacity: 0.8;
+}
+
+li.sub-links:hover {
+  opacity: 1;
+  /* border-right: 2px solid purple; */
+  transition: ease-in 0.5s background;
+  background: rgb(255 255 255 / 4%);
+}
+
+a.onn {
+  color: rgb(255 64 255) !important;
+  font-weight: 600;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+span.is-pulled-right.valImg {
+  -webkit-mask-image: url(/valorant.svg);
+  width: 1.5rem;
+  height: 1.5rem;
+  background: #fff;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+span.is-pulled-right.csImg {
+  -webkit-mask-image: url(/csgo.svg);
+  width: 1.5rem;
+  height: 1.5rem;
+  background: #fff;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+span.is-pulled-right.fifImg {
+  -webkit-mask-image: url(/fifa.svg);
+  width: 1.5rem;
+  height: 1.5rem;
+  background: #fff;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+span.is-pulled-right.dotImg {
+  -webkit-mask-image: url(/dota2.svg);
+  width: 1.5rem;
+  height: 1.5rem;
+  background: #fff;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+li.sub-links:hover span.is-pulled-right.valImg {
+  background: rgb(133 36 235 / 87%);
+}
+
+li.sub-links:hover span.is-pulled-right.csImg {
+  background: orange;
+}
+
+li.sub-links:hover span.is-pulled-right.fifImg {
+  background: blue;
+}
+
+li.sub-links:hover span.is-pulled-right.dotImg {
+  background: red;
+}
+
+span.is-pulled-right.valImg.onn {
+  background: rgb(133 36 235 / 87%);
+}
+
+span.is-pulled-right.csImg.onn {
+  background: orange;
+}
+
+span.is-pulled-right.fifImg.onn {
+  background: blue;
+}
+
+span.is-pulled-right.dotImg.onn {
+  background: red;
+}
+
+button.uk-offcanvas-close {
+  background: none;
+  border: none;
+  color: #fff;
+  content: &#9747;
+  content: "\00d7";
+  /* display: inline-block; */
+  font-size: 5vh;
+  padding: 0rem;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+button.uk-offcanvas-close:hover {
+  opacity: 1;
+  transition: ease-in 0.4s opacity;
+}
+
+button.uk-offcanvas-close:after {
+  content: "\00d7";
+}

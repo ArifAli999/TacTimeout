@@ -1,6 +1,6 @@
 import Layout from '../comps/Layout'
 import '../styles/globals.css'
-import Valorant from './upcoming/valorant';
+import '../styles/nav.css';
 
 function MyApp({ Component, pageProps }) {
   return (
