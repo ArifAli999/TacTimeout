@@ -1,3 +1,8 @@
+import { useEffect } from "react";
+
+
+
+//PARAMS SETTINGS
 export const getStaticPaths = async () => {
   const res = await fetch(`https://api.pandascore.co/matches/upcoming?sort=&page=1&per_page=50&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
   const data = await res.json();
@@ -12,6 +17,8 @@ export const getStaticPaths = async () => {
     fallback: 'blocking'
   }
 }
+
+// DATA & PLAYER LIST FETCH
 
 export const getStaticProps = async (context) => {
   const slug = context.params.slug;
@@ -29,96 +36,174 @@ export const getStaticProps = async (context) => {
     }
   }
 }
+
+// MAIN RENDER FUNCTION 
 export default function upcomingGame({ game, plays }) {
+  useEffect(() => {
+    let tabsWithContent = (function () {
+      let tabs = document.querySelectorAll('.tabs li');
+      let tabsContent = document.querySelectorAll('.tab-content');
+
+      let deactvateAllTabs = function () {
+        tabs.forEach(function (tab) {
+          tab.classList.remove('is-active');
+        });
+      };
+
+      let hideTabsContent = function () {
+        tabsContent.forEach(function (tabContent) {
+          tabContent.classList.remove('is-active');
+        });
+      };
+
+      let activateTabsContent = function (tab) {
+        tabsContent[getIndex(tab)].classList.add('is-active');
+      };
+
+      let getIndex = function (el) {
+        return [...el.parentElement.children].indexOf(el);
+      };
+
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          deactvateAllTabs();
+          hideTabsContent();
+          tab.classList.add('is-active');
+          activateTabsContent(tab);
+        });
+      })
+
+      tabs[0].click();
+    })();
+  }, [])
   return (
-    <div className="container is-fluid">
+    <div className="">
 
 
       {game.map((g) => (
-
-
-
-
-        <div className="container" key={g.slug} id={g.slug}>
+        <div className="container" key={g.id}>
 
 
           <div className="inner-box">
-            {/** Fetch team and display their corresponding score - A bit of code repition :( */}
-            <div className="score-board-min columns is-mobile is-multiline">
-              <div className="column is-full"> {g.opponents.slice(0, -1).map((o) => <span className="team" key={o.opponent.name} id={o.opponent.name}>{o.opponent.name}</span>)}
-                {g.results.slice(0, -1).map((res, i) => (
-                  <span className="scores" key={res.id} id={res.id}>{res.score}</span>
-                ))}</div>
+            {/** Fetch team and display their corresponding score - */}
+            <div className=' scoreboards'>
+              <div className='team-one'>
+                <div className='team-name'>
 
-              <div className="column">
-                {g.opponents.slice(-1).map((o) => <span className="team" key={o.opponent.name} >{o.opponent.name}</span>)}
-                {g.results.slice(-1).map((res, i) => (
-                  <span className="scores" key={res.id} id="hi"><div>{res.score}</div></span>
-                ))}
+                  {g.opponents.slice(0, -1).map((o) =>
+                    <figure className='immage-box' key={o.id}>
+                      <img src={o.opponent.image_url} className='team-img is-rounded'></img>
+                      <figcaption key={o.opponent.id}>
+                        {o.opponent.name}</figcaption> </figure>)}
+                </div>
+              </div>
+              <div className="scoresrn">
+                <span className="teamoneSc">1</span>
+                -
+                <span className="teamoneSc">3</span>
+              </div>
+              <div className='team-one'>
+                <div className='team-name'>
 
+                  {g.opponents.slice(-1).map((o) =>
+                    <figure className='immage-box' key={o.id}>
+                      <img src={o.opponent.image_url} className='team-img is-rounded' key={o.opponent.name}></img>
+                      <figcaption key={o.opponent.id}>
+                        {o.opponent.name}</figcaption> </figure>)}
+                </div>
               </div>
             </div>
-            <br />
 
-            <div className="lower-box columns is-multine">
+            <div id="tabs-with-content">
+              <div className="tabs is-toggle is-toggle-rounded is-centered">
+                <ul className="tab-ul">
+                  <li><a className="gamelinks">Game Info</a></li>
+                  <li><a className="gamelinks">Players</a></li>
+                  <li><a className="gamelinks">Stream</a></li>
 
-              <div className="column is-half">
-
-                <div className="dark"><span className="is-pulled-left">League</span>  <span className="is-pulled-right">{g.league && g.league.name}</span></div>
-                <div className="dark"><span className="is-pulled-left">Game:</span>  <span className="is-pulled-right">  {g.videogame && g.videogame.name} </span></div>
-                <div className="dark alt"><span className="is-pulled-left">Tournament</span>  <span className="is-pulled-right"> {g.tournament && g.tournament.name} | </span></div>
-                <div className="dark"><span className="is-pulled-left">Series</span>  <span className="is-pulled-right"> {g.serie.full_name} | {g.serie.tier.toUpperCase()} </span></div>
-                <div className="dark alt"><span className="is-pulled-left">Teams</span>  <span className="is-pulled-right">   {g.opponents.map((o) => o.opponent.name).join(" vs ")}  </span></div>
-
-
-
+                </ul>
               </div>
-              {plays.opponents ? (<p></p>) : null}
-              <div className="column is-half columns">
+              <div>
+                <section className="tab-content">
 
+                  {/*Game Info **/}
+
+
+                  <div className="lower-box columns is-multine">
+
+                    <div className="column is-full">
+
+                      <div className="dark"><span className="is-pulled-left">League</span>  <span className="is-pulled-right">{g.league && g.league.name}</span></div>
+                      <div className="dark"><span className="is-pulled-left">Game:</span>  <span className="is-pulled-right">  {g.videogame && g.videogame.name} </span></div>
+                      <div className="dark alt"><span className="is-pulled-left">Tournament</span>  <span className="is-pulled-right"> {g.tournament && g.tournament.name} | </span></div>
+                      <div className="dark"><span className="is-pulled-left">Series</span>  <span className="is-pulled-right"> {g.serie.full_name} | {g.serie.tier.toUpperCase()} </span></div>
+                      <div className="dark alt"><span className="is-pulled-left">Teams</span>  <span className="is-pulled-right">   {g.opponents.map((o) => o.opponent.name).join(" vs ")}  </span></div>
+                    </div>
+                  </div>
+
+                </section>
+
+                <section className="tab-content">
+<div className='columns is-multiline'>
                 <div className="column is-half">
-                  {plays.opponents.slice(0, -1).map((y) => (
-                    <>
-                      <div className="teamblock" key={y.id}>{y.name}</div>
-                      {y.players.map((play) => (
-                      
+                  {plays.opponents.slice(0,-1).map((y) => (
+                    
+                      <>
+                  <div className="teamblock" key={y.id}>{y.name}</div>
+                      <div className='pl'>
+                        {y.players.map((player) => (
+                          <>
+                        {player.name && (<div className="opp2 dark" key={y.slug} id={y.slug}>
+                        <p key={player.id}>
+                          {player.name ? (<span>{player.name}</span>) :(<p>Sorry, No players for this game.</p>)}
 
-                        <>{play.name && (<div className="opp2 dark" key={y.slug} id={y.slug}>
-
-                          <p key={play.id}>
-                            {play.name ? (<span>{play.name}</span>) : ''}
-
-                          </p>
-                        </div>)}</>
-                      ))}
-
-                    </>))}
+                        </p>
+                      </div>)}</>
+                        ))}
+                        </div></>
+                  ))}
                 </div>
+
 
                 <div className="column is-half">
                   {plays.opponents.slice(-1).map((y) => (
                     <>
                   <div className="teamblock alt" key={y.id}>{y.name}</div>
-                      {y.players.map((play) => (
+                  <div className='pl'>
+                        {y.players.map((player) => (
+                          <>
+                        {player.name && (<div className="opp2 dark" key={y.slug} id={y.slug}>
+                        <p key={player.id}>
+                          {player.name ? (<span>{player.name}</span>) :(<p>Sorry, No players for this game have been released.</p>)}
 
-
-                        <>{play.name && (<div className="opp2 dark" key={y.slug} id={y.slug}>
-                          <p key={play.id}>
-                            {play.name ? (<span>{play.name}</span>) : ''}
-
-                          </p>
-                        </div>)}</>
-                      ))}
+                        </p>
+                      </div>)}</>
+                        ))}
+                        </div>
 
                     </>))}
                 </div>
 
+                </div>
+                </section>
+
+                <section className="tab-content">
+                <div className="column is-full">
+        
+                <div class="twitch" key={g.live_embed_url}>
+                   <div class="twitch-video">
+                     {g.live_embed_url ? (<iframe src={`${g.live_embed_url}&parent=localhost`} frameBorder="0" allowFullscreen="true" scrolling="no" height="300" width="100%">
+                     </iframe>)
+                       : <p>Sorry No Streams found please follow this link   <a href={g.streams.official.embed_url}>Watch now</a> - </p>
+                     }</div></div>
+                </div>
+                </section>
+
               </div>
-
-
-
-
             </div>
+
+
+
 
 
 
@@ -129,7 +214,13 @@ export default function upcomingGame({ game, plays }) {
 
         </div>
       ))}
+
+   
+
+
     </div>
 
   )
+
+  // RENDER FUNCTION END.
 }

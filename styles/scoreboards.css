@@ -1,0 +1,30 @@
+.scoreboards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    color: #fff;
+    margin-bottom: 3rem;
+    background: rgb(154 134 134 / 39%);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: inset 0px 1px 20px 6px rgb(163 17 225 / 67%);
+
+}
+img.team-img.is-rounded {
+    max-height: 10vh;
+    margin-bottom: 2rem;
+    width: 60px;
+}
+
+figure.immage-box {
+    width: max-content;
+    text-align: center;
+}
+
+.scoresrn {
+    align-self: center;
+    font-size: 7vh;
+    font-weight: 800;
+    text-shadow: 2px 9px 8px rgb(0 0 0 / 85%);
+    
+}

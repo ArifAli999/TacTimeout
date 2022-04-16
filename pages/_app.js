@@ -1,6 +1,7 @@
 import Layout from '../comps/Layout'
 import '../styles/globals.css'
 import '../styles/nav.css';
+import '../styles/scoreboards.css';
 
 function MyApp({ Component, pageProps }) {
   return (
