@@ -192,7 +192,7 @@ export default function UpcomingGame({ game, plays }) {
         
                 <div className="twitch" key={g.live_embed_url}>
                    <div className="twitch-video">
-                     {g.live_embed_url ? (<iframe src={`${g.live_embed_url}&parent=localhost`} frameBorder="0" allowFullScreen="true" scrolling="no" height="300" width="100%">
+                     {g.live_embed_url ? (<iframe src={`${g.live_embed_url}&parent=riffyraff.me`} frameBorder="0" allowFullScreen="true" scrolling="no" height="300" width="100%">
                      </iframe>)
                        : <p>Sorry No Streams found please follow this link   <a href={g.streams.official.embed_url}>Watch now</a> - </p>
                      }</div></div>
