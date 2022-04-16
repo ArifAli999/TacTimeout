@@ -38,7 +38,7 @@ export const getStaticProps = async (context) => {
 }
 
 // MAIN RENDER FUNCTION 
-export default function upcomingGame({ game, plays }) {
+export default function UpcomingGame({ game, plays }) {
   useEffect(() => {
     let tabsWithContent = (function () {
       let tabs = document.querySelectorAll('.tabs li');

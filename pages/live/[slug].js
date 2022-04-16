@@ -37,8 +37,8 @@ export const getStaticProps = async (context) => {
 
 
 
-export default function live({ game, plays }) {
-console.log(plays);
+export default function LiveGame({ game, plays }) {
+
   useEffect(() => {
     let tabsWithContent = (function () {
       let tabs = document.querySelectorAll('.tabs li');
