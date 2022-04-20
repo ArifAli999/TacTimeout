@@ -96,7 +96,7 @@ export default function PastGames({ game, plays }) {
                     <figure className='immage-box' key={o.id}>
                       <img src={o.opponent.image_url} className='team-img is-rounded'></img>
                       <figcaption key={o.opponent.id}>
-                        {o.opponent.name}</figcaption> </figure>)}
+                      </figcaption> </figure>)}
                 </div>
               </div>
               <div className="scoresrn">
