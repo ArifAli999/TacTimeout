@@ -88,33 +88,7 @@ export default function PastGames({ game, plays }) {
 
           <div className="inner-box">
             {/** Fetch team and display their corresponding score - */}
-            <div className=' scoreboards'>
-              <div className='team-one'>
-                <div className='team-name'>
-
-                  {g.opponents.slice(0, -1).map((o) =>
-                    <figure className='immage-box' key={o.id}>
-                      <img src={o.opponent.image_url} className='team-img is-rounded'></img>
-                      <figcaption key={o.opponent.id}>
-                      </figcaption> </figure>)}
-                </div>
-              </div>
-              <div className="scoresrn">
-                <span className="teamoneSc">1</span>
-                -
-                <span className="teamoneSc">3</span>
-              </div>
-              <div className='team-one'>
-                <div className='team-name'>
-
-                  {g.opponents.slice(-1).map((o) =>
-                    <figure className='immage-box' key={o.id}>
-                      <img src={o.opponent.image_url} className='team-img is-rounded' key={o.opponent.name}></img>
-                      <figcaption key={o.opponent.id}>
-                        {o.opponent.name}</figcaption> </figure>)}
-                </div>
-              </div>
-            </div>
+         
 
             <div id="tabs-with-content">
               <div className="tabs is-toggle is-toggle-rounded is-centered">
