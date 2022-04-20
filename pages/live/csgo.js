@@ -31,7 +31,7 @@ function CsGo({ csres }) {
                     
                     <div className='container is-fluid'>
                     <div className='error-box'>
-                        <div class="notification is-danger">
+                        <div className="notification is-danger">
                             
                             Sorry there are currently no <strong>LIVE CS:GO </strong>games right now <br/><br/>
                             For a full list of live games right now please follow this link <strong>
