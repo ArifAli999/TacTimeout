@@ -2,7 +2,7 @@ import React from 'react';
 import Moment from 'react-moment';
 import Link from 'next/link';
 
-function Valorant({ valres }) {
+function CSgoPast({ valres }) {
 
     return (
         <div className='container is-fluid'>
@@ -14,7 +14,7 @@ function Valorant({ valres }) {
                             <div className="column is-half" key={q.id}>
                                 <div className="inner">
                                     <div className="inner__box">
-                                        <Link href={'/live/' + q.slug} key={q.slug}>
+                                        <Link href={'/past/' + q.slug} key={q.slug}>
                                             <a className="h2link" key={q.slug}>
                                                 {q.name}
                                             </a>
@@ -27,24 +27,7 @@ function Valorant({ valres }) {
                                 </div>
                             </div>
                         ))}
-                    </>) : (
-
-                    <div className='container is-fluid'>
-                        <div className='error-box'>
-                            <div class="notification is-danger">
-                                
-                                Sorry there are currently no <strong>LIVE VALORANT</strong> games right now <br/><br/>
-                                For a full list of live games right now please follow this link <strong>
-                                <Link href={'/live/'}>
-                                    <a>Live</a>
-                                </Link>
-                                </strong>
-                            </div>
-
-                        </div>
-                    </div>
-
-                )}
+                    </>) : (<p>Sorry, No Live Valorant Games Right.</p>)}
 
             </div>
         </div>
@@ -53,7 +36,7 @@ function Valorant({ valres }) {
 
 export async function getServerSideProps() {
 
-    const valresult = await fetch(`https://api.pandascore.co/matches/running?filter[videogame]=valorant&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
+    const valresult = await fetch(`https://api.pandascore.co/matches/past?filter[videogame]=cs-go&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
 
 
     const valdata = await valresult.json();
@@ -67,4 +50,4 @@ export async function getServerSideProps() {
 }
 
 
-export default Valorant;
+export default CSgoPast;

@@ -1,12 +1,17 @@
 import React from 'react';
 import Moment from 'react-moment';
 import Link from 'next/link';
+import InfiniteScroll from 'react-infinite-scroll-component';
+
 
 function DotaTwo({ dotres }) {
 
     return (
         <div className='container is-fluid'>
             <div className="columns is-multiline">
+
+
+                
 
                 {dotres.length ? (
                     <>

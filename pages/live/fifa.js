@@ -27,7 +27,25 @@ function FifaLive({ fifares }) {
                                 </div>
                             </div>
                         ))}
-                    </>) : (<p>Sorry, No Live Fifa Games Right.</p>)}
+                    </>) : (
+                    
+                    <div className='container is-fluid'>
+                    <div className='error-box'>
+                        <div class="notification is-danger">
+                            
+                            Sorry there are currently no <strong>LIVE FIFA</strong> games right now <br/><br/>
+                            For a full list of live games right now please follow this link <strong>
+                            <Link href={'/live/'}>
+                                <a>Live</a>
+                            </Link>
+                            </strong>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                    )}
 
             </div>
         </div>

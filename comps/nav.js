@@ -99,6 +99,38 @@ const Navbar = () => {
                             </ul>
                         </li>
 
+
+                        <li className="uk-parent">
+                            <a href="#" className="parentLink">Past Games</a>
+                            <ul class="uk-nav-sub">
+
+                                <li className="sub-links">
+                                <span className={router.pathname == "/past/valp" ? "is-pulled-right valImg onn " : "is-pulled-right valImg"}></span>
+                                    <Link href="/past/valp" >
+                                        <a className={styles.nava}>Valorant</a>
+                                    </Link></li>
+
+
+                                    <li className="sub-links">  
+                                    <span className={router.pathname == "/past/csgop" ? "is-pulled-right csImg onn " : "is-pulled-right csImg"}></span>
+                                     <Link href="/past/csgop" >
+                                    <a className={styles.nava}>CS:GO</a>
+                                    </Link></li>
+
+                                    <li className="sub-links">
+                                    <span className={router.pathname == "/upcoming/fifa" ? "is-pulled-right fifImg onn " : "is-pulled-right fifImg"}></span>
+                                <Link href="/upcoming/fifa" >
+                                   <a className={styles.nava}>Fifa</a>
+                                   </Link></li>
+
+                                   <li className="sub-links">
+                                   <span className={router.pathname == "/upcoming/dota" ? "is-pulled-right dotImg onn " : "is-pulled-right dotImg"}></span>
+                                <Link href="/upcoming/dota" >
+                                <a className={styles.nava}>Dota</a></Link></li>
+
+                            </ul>
+                        </li>
+
                     </ul>
 
                     <button className="uk-offcanvas-close" type="button"></button>

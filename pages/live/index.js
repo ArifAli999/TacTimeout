@@ -37,6 +37,7 @@ const UpcomingGames = ({ game }) => {
   
             <div className="container">
                 <h2>Live Games  - </h2>
+    
                 <div className="columns is-multiline">
                 {game.map(q => (
                     <div className="column is-half" key={q.id}>
@@ -45,6 +46,20 @@ const UpcomingGames = ({ game }) => {
                      <Link href = {'/live/' + q.slug}  key={q.slug}>
                        <a className="h2link" key={q.slug}> {q.name}</a>
                   </Link>
+                  {/*
+                  {q.opponents.map(({opponent}) => (
+
+<span key={opponent.id} className={opponent.acronym}>
+
+{opponent.name}
+
+
+({q.results.find((result) => result.team_id === opponent.id).score})
+
+   
+</span>
+
+                  ))}*/}
                   <span className="is-pulled-right tag is-danger">
                                  LIVE
                     </span>
