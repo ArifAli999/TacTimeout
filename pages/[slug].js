@@ -65,7 +65,7 @@ export default function Tournaments({ game, teams }) {
               <div className='touri_name'>Tournament Info :</div>
               <div className='tournybox'>
 
-                <p className='alt tour'>Prizepool : <span className='main tour'>{game.prizepool.slice(0, 7)}</span></p>
+                <p className='alt tour'>Prizepool : <span className='main tour'>{game.prizepool}</span></p>
 
 
                 <p className='alt tour'>Videogamme :  <span className='main tour'>{game.videogame.name}</span></p>
