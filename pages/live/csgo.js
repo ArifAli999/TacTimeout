@@ -56,13 +56,19 @@ function CsGo({ csres }) {
     )
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
+    const { query } = context;
+    if (!query.page) {
+        query.page = "1";
+     }
+  
 
-    const csresult = await fetch(`https://api.pandascore.co/matches/running?filter[videogame]=cs-go&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
+    console.log(context.req.params);
+    const csresult = await fetch(`https://api.pandascore.co/matches/running?sort=&page=${query.page}&per_page=30&filter[videogame]=csgo&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
 
 
     const data = await csresult.json();
-
+    console.log(query.page)
 
     return {
         props: { csres: data },
