@@ -148,24 +148,7 @@ export default function PastGames({ game,  }) {
                
 
 
-                <div className="column is-half">
-                  {plays.opponents.slice(-1).map((y) => (
-                    <>
-                  <div className="teamblock alt" key={y.id}>{y.name}</div>
-                  <div className='pl'>
-                        {y.players.map((player) => (
-                          <>
-                        {player.name && (<div className="opp2 dark" key={y.slug} id={y.slug}>
-                        <p key={player.id}>
-                          {player.name ? (<span>{player.name}</span>) :(<p>Sorry, No players for this game have been released.</p>)}
-
-                        </p>
-                      </div>)}</>
-                        ))}
-                        </div>
-
-                    </>))}
-                </div>
+             
 
                 </div>
                 </section>
