@@ -22,7 +22,6 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
   const slug = context.params.slug;
   const res = await fetch(`https://api.pandascore.co/matches/past?search[slug]=${slug}&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0 `);
-  const players = await fetch(`https://api.pandascore.co/matches/${slug}/opponents?token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
   const data = await res.json();
   const data2 = await players.json();
 
@@ -30,7 +29,6 @@ export const getStaticProps = async (context) => {
   return {
     props: {
       game: data,
-      plays: data2
 
     }
   }
@@ -38,7 +36,7 @@ export const getStaticProps = async (context) => {
 
 
 
-export default function PastGames({ game, plays }) {
+export default function PastGames({ game,  }) {
 
   useEffect(() => {
     let tabsWithContent = (function () {
@@ -147,24 +145,7 @@ export default function PastGames({ game, plays }) {
 
                 <section className="tab-content">
 <div className='columns is-multiline'>
-                <div className="column is-half">
-                  {plays.opponents.slice(0,-1).map((y) => (
-                    
-                      <>
-                  <div className="teamblock" key={y.id}>{y.name}</div>
-                      <div className='pl'>
-                        {y.players.map((player) => (
-                          <>
-                        {player.name && (<div className="opp2 dark" key={y.slug} id={y.slug}>
-                        <p key={player.id}>
-                          {player.name ? (<span>{player.name}</span>) :(<p>Sorry, No players for this game.</p>)}
-
-                        </p>
-                      </div>)}</>
-                        ))}
-                        </div></>
-                  ))}
-                </div>
+               
 
 
                 <div className="column is-half">
