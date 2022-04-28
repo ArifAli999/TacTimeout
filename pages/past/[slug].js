@@ -1,10 +1,9 @@
 import Image from 'next/image';
 import { useEffect } from 'react';
-import Moment from 'react-moment';
 
 
 export const getStaticPaths = async () => {
-  const res = await fetch(`https://api.pandascore.co/matches/past?&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
+  const res = await fetch(`https://api.pandascore.co/matches/past?sort=&page=1&per_page=50&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
   const data = await res.json();
 
   const paths = data.map(o => {
@@ -22,12 +21,15 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
   const slug = context.params.slug;
   const res = await fetch(`https://api.pandascore.co/matches/past?search[slug]=${slug}&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0 `);
+  const players = await fetch(`https://api.pandascore.co/matches/${slug}/opponents?token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
   const data = await res.json();
- 
+  const data2 = await players.json();
+
 
   return {
     props: {
       game: data,
+      plays: data2
 
     }
   }
@@ -35,7 +37,7 @@ export const getStaticProps = async (context) => {
 
 
 
-export default function PastGames({ game,  }) {
+export default function LiveGame({ game, plays }) {
 
   useEffect(() => {
     let tabsWithContent = (function () {
@@ -135,8 +137,8 @@ export default function PastGames({ game,  }) {
                       <div className="dark"><span className="is-pulled-left">League</span>  <span className="is-pulled-right">{g.league && g.league.name}</span></div>
                       <div className="dark"><span className="is-pulled-left">Game:</span>  <span className="is-pulled-right">  {g.videogame && g.videogame.name} </span></div>
                       <div className="dark alt"><span className="is-pulled-left">Tournament</span>  <span className="is-pulled-right"> {g.tournament && g.tournament.name} | </span></div>
-                      <div className="dark"><span className="is-pulled-left">Time & Date</span>  <span className="is-pulled-right"> <Moment format='DD/M - HH:MM'>{g.scheduled_at}</Moment></span></div>
-                      <div className="dark alt"><span className="is-pulled-left">Winner</span>  <span className="is-pulled-right"> <b>{g.winner.name}</b> </span></div>
+                      <div className="dark"><span className="is-pulled-left">Series</span>  <span className="is-pulled-right"> {g.serie.full_name} | {g.serie.tier.toUpperCase()} </span></div>
+                      <div className="dark alt"><span className="is-pulled-left">Teams</span>  <span className="is-pulled-right">   {g.opponents.map((o) => o.opponent.name).join(" vs ")}  </span></div>
                     </div>
                   </div>
 
@@ -144,9 +146,44 @@ export default function PastGames({ game,  }) {
 
                 <section className="tab-content">
 <div className='columns is-multiline'>
-               
+                <div className="column is-half">
+                  {plays.opponents.slice(0,-1).map((y) => (
+                    
+                      <>
+                  <div className="teamblock" key={y.id}>{y.name}</div>
+                      <div className='pl'>
+                        {y.players.map((player) => (
+                          <>
+                        {player.name && (<div className="opp2 dark" key={y.slug} id={y.slug}>
+                        <p key={player.id}>
+                          {player.name ? (<span>{player.name}</span>) :(<p>Sorry, No players for this game.</p>)}
 
-             
+                        </p>
+                      </div>)}</>
+                        ))}
+                        </div></>
+                  ))}
+                </div>
+
+
+                <div className="column is-half">
+                  {plays.opponents.slice(-1).map((y) => (
+                    <>
+                  <div className="teamblock alt" key={y.id}>{y.name}</div>
+                  <div className='pl'>
+                        {y.players.map((player) => (
+                          <>
+                        {player.name && (<div className="opp2 dark" key={y.slug} id={y.slug}>
+                        <p key={player.id}>
+                          {player.name ? (<span>{player.name}</span>) :(<p>Sorry, No players for this game have been released.</p>)}
+
+                        </p>
+                      </div>)}</>
+                        ))}
+                        </div>
+
+                    </>))}
+                </div>
 
                 </div>
                 </section>
