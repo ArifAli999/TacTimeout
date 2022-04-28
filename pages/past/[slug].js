@@ -23,8 +23,7 @@ export const getStaticProps = async (context) => {
   const slug = context.params.slug;
   const res = await fetch(`https://api.pandascore.co/matches/past?search[slug]=${slug}&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0 `);
   const data = await res.json();
-  const data2 = await players.json();
-
+ 
 
   return {
     props: {
@@ -146,7 +145,6 @@ export default function PastGames({ game,  }) {
                 <section className="tab-content">
 <div className='columns is-multiline'>
                
-
 
              
 
