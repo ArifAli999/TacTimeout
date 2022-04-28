@@ -48,8 +48,8 @@ export default function Tournaments({ game, teams }) {
 
 
         <div className='info-column-box'>
-          <div class="squarebox">
-            <img class="tour-img" src={game.league.image_url}></img>
+          <div className="squarebox">
+            <img className="tour-img" src={game.league.image_url}></img>
           </div>
           <div className='namfullbox'>
             <p className='namefull'> {game.name} - {game.full_name}
