@@ -8,7 +8,7 @@ import {useEffect} from 'react'
 
 
 const fetcher = (url) => fetch(url).then((res) => res.json())
-const FETCH_URL = 'http://localhost:3000/api/upcoming-cs'
+const FETCH_URL = '../api/upcoming-cs'
 
 
 function CSCounter(props) {
