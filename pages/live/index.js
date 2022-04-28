@@ -44,7 +44,7 @@ const UpcomingGames = ({ game }) => {
                         <div className="inner">
                         <div className="inner__box">
                      <Link href = {'/live/' + q.slug}  key={q.slug}>
-                       <a className="h2link" key={q.slug}> {q.name}</a>
+                       <a className="h2link" key={q.slug} data-cy="id"> {q.name}</a>
                   </Link>
                   {/*
                   {q.opponents.map(({opponent}) => (

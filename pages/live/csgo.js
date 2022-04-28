@@ -1,9 +1,14 @@
 import React from 'react';
 import Moment from 'react-moment';
 import Link from 'next/link';
+import {useEffect} from 'react'
+
 
 function CsGo({ csres }) {
 
+  
+  
+ 
     return (
         <div className='container is-fluid'>
             <div className="columns is-multiline">

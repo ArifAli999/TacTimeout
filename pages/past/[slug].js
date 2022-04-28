@@ -139,7 +139,7 @@ export default function PastGames({ game, plays }) {
                       <div className="dark"><span className="is-pulled-left">Game:</span>  <span className="is-pulled-right">  {g.videogame && g.videogame.name} </span></div>
                       <div className="dark alt"><span className="is-pulled-left">Tournament</span>  <span className="is-pulled-right"> {g.tournament && g.tournament.name} | </span></div>
                       <div className="dark"><span className="is-pulled-left">Time & Date</span>  <span className="is-pulled-right"> <Moment format='DD/M - HH:MM'>{g.scheduled_at}</Moment></span></div>
-                      <div className="dark alt"><span className="is-pulled-left">Winner</span>  <span className="is-pulled-right">   </span></div>
+                      <div className="dark alt"><span className="is-pulled-left">Winner</span>  <span className="is-pulled-right"> <b>{g.winner.name}</b> </span></div>
                     </div>
                   </div>
 

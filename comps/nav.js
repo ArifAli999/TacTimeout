@@ -5,6 +5,8 @@ import "uikit/dist/css/uikit.min.css";
 import "uikit/dist/js/uikit.min.js";
 import "uikit/dist/js/uikit-icons.min.js"
 import uikit from "uikit";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
 
 import valIcon from '../public/valorant.svg';
 
@@ -27,7 +29,9 @@ const Navbar = () => {
 
 
         <>
-            <button data-uk-toggle="target: #my-id" type="button">Menu</button>
+            <button data-uk-toggle="target: #my-id" type="button" className="menubtn">
+            <FontAwesomeIcon icon={faBars} />
+               </button>
 
             <a href="#my-id" data-uk-toggle></a>
 
@@ -71,12 +75,6 @@ const Navbar = () => {
                         <li className="uk-parent">
                             <a href="#" className="parentLink">Upcoming Games</a>
                             <ul class="uk-nav-sub">
-
-                                <li className="sub-links">
-                                <span className={router.pathname == "/upcoming/valorant" ? "is-pulled-right valImg onn " : "is-pulled-right valImg"}></span>
-                                    <Link href="/upcoming/valorant" >
-                                        <a className={styles.nava}>Valorant</a>
-                                    </Link></li>
 
 
                                     <li className="sub-links">  

@@ -14,9 +14,9 @@ function CSCounter({ dotres }) {
                             <div className="column is-half" key={q.id}>
                                 <div className="inner">
                                     <div className="inner__box">
-                                        <Link href={'/upcoming/' + q.slug} key={q.slug}>
+                                        <Link href={'/upcoming/' + q.slug} key={q.slug} data-cy="id">
                                             <a className="h2link" key={q.slug}>
-                                                {q.name}
+                                                {q.name}.id
                                             </a>
                                         </Link>
 
