@@ -45,20 +45,16 @@ const Blog = (props) => {
         //Generating posts list
         content = (
             <>
-                {props.posts.map(({ id, name }) => (
-                    <div className='s' key={id}>
+                {props.posts.map((post) => (
+                    <div className='s' key={post.id}>
                         <img variant="top"  width={360} height={215} />
                         <div>
                             <div>
-                                <Link href={`/posts/${id}`}>
-                                    <a>
-                                        {id}
-                                    </a>
-                                </Link>
+                             
                             </div>
                             <div className="mb-2 text-muted"></div>
-                            <div key={name}>
-                                {name}
+                            <div key={post.name}>
+                                {post.name}
                             </div>
                         </div>
                     </div>
@@ -66,12 +62,11 @@ const Blog = (props) => {
             </>
         );
     }
-
+   
     return (
+        
     
-            <><Head>
-            <title> - Blog</title>
-        </Head>
+            <>
         <div className={"container-md"}>
                 <div>
                     {content}
@@ -85,7 +80,7 @@ const Blog = (props) => {
                     containerClassName={'pagination'}
                     subContainerClassName={'pages pagination'}
                     initialPage={1}
-                    pageCount={props.posts.length}
+                    pageCount={10}
                     marginPagesDisplayed={2}
                     pageRangeDisplayed={5}
                     onPageChange={paginationHandler} />
@@ -94,13 +89,17 @@ const Blog = (props) => {
     )
 }
 
-Blog.getInitialProps = async ({ query }) => {
+export async function getServerSideProps({query, req}) {
     const page = query.page || 1; //if page empty we request the first page
-    const response = await fetch(`https://api.pandascore.co/matches/upcoming?sort=&page=${page}&per_page=5&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`)
-    const posts = await response.json()
+    const response = await fetch(`https://api.pandascore.co/matches/upcoming?sort=&page=${page}&per_page=5&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
+   
+   
+    const posts = await response.json();
     return {
-        
-        posts: posts
+        props: {
+            posts,
+        }
+      
     };
 }
 
