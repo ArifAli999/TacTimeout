@@ -3,6 +3,9 @@ import '../styles/globals.css'
 import '../styles/nav.css';
 import '../styles/scoreboards.css';
 
+
+
+
 export function reportWebVitals(metric) {
   switch (metric.name) {
     case 'Next.js-hydration':

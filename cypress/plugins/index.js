@@ -13,7 +13,6 @@
 // the project's config changing)
 
 
-const injectNextDevServer = require('@cypress/react/plugins/next')
 
 /**
  * @type {Cypress.PluginConfig}
@@ -25,9 +24,7 @@ module.exports = (on, config) => {
       launchOptions.args.push('--disable-gpu');
       return launchOptions
     }
-    if (config.testingType === 'component') {
-      injectNextDevServer(on, config)
-    }
+  
 
   });
 

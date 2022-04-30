@@ -2,8 +2,6 @@ import Link from "next/link";
 import styles from './nav.module.css'
 import { useRouter } from "next/router";
 import "uikit/dist/css/uikit.min.css";
-import "uikit/dist/js/uikit.min.js";
-import "uikit/dist/js/uikit-icons.min.js"
 import uikit from "uikit";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
