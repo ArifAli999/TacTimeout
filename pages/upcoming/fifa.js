@@ -1,6 +1,7 @@
 import React from 'react';
 import Moment from 'react-moment';
 import Link from 'next/link';
+import Fallback from '../../comps/Fallback';
 
 
 function FifaUpcoming({ dotres }) {
@@ -31,7 +32,7 @@ function FifaUpcoming({ dotres }) {
                 </div>
               </div>
             ))}
-          </>) : (<p>Sorry, No Upcoming Fifa Games Right Now</p>)}
+          </>) : (<Fallback title={'Fifa'}/>)}
 
       </div>
     </div>

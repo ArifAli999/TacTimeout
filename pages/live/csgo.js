@@ -2,13 +2,12 @@ import React from 'react';
 import Moment from 'react-moment';
 import Link from 'next/link';
 import {useEffect} from 'react'
+import Fallback from '../../comps/Fallback';
 
 
-function CsGo({ csres }) {
+function CsGo({ csres,title }) {
 
-  
-  
- 
+
     return (
         <div className='container is-fluid'>
             <div className="columns is-multiline">
@@ -34,20 +33,7 @@ function CsGo({ csres }) {
                         ))}
                     </>) : (
                     
-                    <div className='container is-fluid'>
-                    <div className='error-box'>
-                        <div className="notification is-danger">
-                            
-                            Sorry there are currently no <strong>LIVE CS:GO </strong>games right now <br/><br/>
-                            For a full list of live games right now please follow this link <strong>
-                            <Link href={'/live/'}>
-                                <a>Live</a>
-                            </Link>
-                            </strong>
-                        </div>
-
-                    </div>
-                </div>
+                    <Fallback title={'CS:GO'}/>
                     
                     )}
 
@@ -64,7 +50,7 @@ export async function getServerSideProps(context) {
   
 
     console.log(context.req.params);
-    const csresult = await fetch(`https://api.pandascore.co/matches/running?sort=&page=${query.page}&per_page=30&filter[videogame]=csgo&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
+    const csresult = await fetch(`https://api.pandascore.co/matches/running?sort=&page=1&per_page=30&filter[videogame]=csgo&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
 
 
     const data = await csresult.json();

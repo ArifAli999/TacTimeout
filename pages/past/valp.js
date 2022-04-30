@@ -1,6 +1,7 @@
 import React from 'react';
 import Moment from 'react-moment';
 import Link from 'next/link';
+import Fallback from '../../comps/Fallback';
 
 function ValorantPast({ valres }) {
 
@@ -27,7 +28,7 @@ function ValorantPast({ valres }) {
                                 </div>
                             </div>
                         ))}
-                    </>) : (<p>Sorry, No Live Valorant Games Right.</p>)}
+                    </>) : (<Fallback title={'CS:GO'}/>)}
 
             </div>
         </div>

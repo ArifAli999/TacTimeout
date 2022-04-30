@@ -1,7 +1,7 @@
 import React from 'react';
 import Moment from 'react-moment';
 import Link from 'next/link';
-
+import Fallback from '../../comps/Fallback';
 function Valorant({ valres }) {
 
     return (
@@ -29,20 +29,8 @@ function Valorant({ valres }) {
                         ))}
                     </>) : (
 
-                    <div className='container is-fluid'>
-                        <div className='error-box'>
-                            <div className="notification is-danger">
-                                
-                                Sorry there are currently no <strong>LIVE VALORANT</strong> games right now <br/><br/>
-                                For a full list of live games right now please follow this link <strong>
-                                <Link href={'/live/'}>
-                                    <a>Live</a>
-                                </Link>
-                                </strong>
-                            </div>
+                    <Fallback title={'CS:GO'} />
 
-                        </div>
-                    </div>
 
                 )}
 

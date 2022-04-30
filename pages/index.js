@@ -20,7 +20,7 @@ export default function Home({ csres }) {
            
           {tour.prizepool && tour.prizepool.length> 0 ?    (<div className="column is-full tourInfo">
            <div className="tour-name">
-              <Link href = {'/' + tour.slug}  key={tour.slug}>
+              <Link href = {'/tournaments/' + tour.slug}  key={tour.slug}>
                 <p className="tourtitle">{tour.name}</p>
                 </Link>
              <span className="prize">{tour.prizepool.slice(0,6)}</span><br/>

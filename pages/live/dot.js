@@ -1,6 +1,8 @@
 import React from 'react';
 import Moment from 'react-moment';
 import Link from 'next/link';
+import '../../comps/Fallback'
+import Fallback from '../../comps/Fallback';
 
 function DotLive({ dotres }) {
 
@@ -29,20 +31,7 @@ function DotLive({ dotres }) {
                         ))}
                     </>) : (
                     
-                    <div className='container is-fluid'>
-                    <div className='error-box'>
-                        <div className="notification is-danger">
-                            
-                            Sorry there are currently no <strong>LIVE DOTA-2</strong> games right now <br/><br/>
-                            For a full list of live games right now please follow this link <strong>
-                            <Link href={'/live/'}>
-                                <a>Live</a>
-                            </Link>
-                            </strong>
-                        </div>
-
-                    </div>
-                </div>
+                    <Fallback title={'Dota'}/>
                     
                     )}
 

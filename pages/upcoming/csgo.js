@@ -3,6 +3,7 @@ import Moment from 'react-moment';
 import Link from 'next/link';
 import useSWR from 'swr'
 import {useEffect} from 'react'
+import Fallback from '../../comps/Fallback';
 
 // data fetching on this page is done by using API routes & useSWR hook library. 
 
@@ -44,7 +45,7 @@ function CSCounter(props) {
                                 </div>
                             </div>
                         ))}
-                    </>) : (<p>Sorry, No Upcoming CS:GO Games Right Now</p>)}
+                    </>) : (<Fallback title={'CS:GO'}/>)}
 
             </div>
         </div>

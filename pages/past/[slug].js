@@ -81,7 +81,7 @@ export default function LiveGame({ game, plays }) {
     <div className="">
 
 
-      {game.map((g) => (
+      {game.length && game.map((g) => (
         <div className="container" key={g.id}>
 
 

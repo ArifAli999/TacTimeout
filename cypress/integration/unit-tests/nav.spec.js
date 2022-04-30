@@ -1,18 +1,17 @@
 /// <reference types="cypress" />
-import { mount } from '@cypress/react'
-import Navbar from '../../components/nav.js'
+
 
 // This is our test spec for the navigation of the website, we test for the routes, check if all the pages routes match the directories, 
 // Check if the menu is visible on different viewports. 
 // Check if menu is readable and accesible of different viewports.
 // Check if menu is reactive and responsive enough.
-// Unit test- Type : Menu
+// Integration test - Type : Menu
 
 describe('Navigation', () => {
   it('should navigate to the about page', () => {
     // Start from the index page
     cy.visit('http://localhost:3000/')
-    mount(<Navbar />)
+  
 
     // Find a link with an href attribute containing "about" and click it
     cy.get(':nth-child(2) > .parentLink').click().wait(1000)
@@ -76,25 +75,3 @@ it('Check the redirects of the `Upcoming` menu items. ', () => {
 })
 
 
-// Check if menu works on diff viewports.
-
-const sizes = ['iphone-7', 'ipad-2',  'macbook-16', 'samsung-s10',  [1024, 768]]
-
-
-describe('Responsiveness', () => {
-  sizes.forEach((size) => {
-    // make assertions on the logo using
-    // an array of different viewports
-    it(`Should display menu on ${size} screen`, () => {
-      if (Cypress._.isArray(size)) {
-        cy.viewport(size[0], size[1])
-      } else {
-        cy.viewport(size)
-      }
-
-      cy.visit('http://localhost:3000/swrtest')
-      cy.get('.menubtn').click().should('be.visible').wait(5000)
-      cy.get('.parentLink').click({multiple:true}).wait(5000)
-    })
-  })
-})
