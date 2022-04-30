@@ -7,7 +7,8 @@ import {Router, withRouter} from "next/router"
 
 
 const Blog = (props) => {
-
+  
+    const [currentPage, setCurrentPage] = useState(0);
     const [isLoading, setLoading] = useState(false);
     const startLoading = () => setLoading(true);
     const stopLoading = () => setLoading(false);
@@ -15,6 +16,7 @@ const Blog = (props) => {
     useEffect(() => { //After the component is mounted set router event handlers
         Router.events.on('routeChangeStart', startLoading);
         Router.events.on('routeChangeComplete', stopLoading);
+     
 
         return () => {
             Router.events.off('routeChangeStart', startLoading);
@@ -25,8 +27,8 @@ const Blog = (props) => {
     const paginationHandler = (page) => {
         const currentPath = props.router.pathname;
         const currentQuery = props.router.query;
-        currentQuery.page = page.selected + 1;
-
+        currentQuery.page = (currentPage + 1);
+        setCurrentPage(currentQuery.page)
         props.router.push({
             pathname: currentPath,
             query: currentQuery,
@@ -70,18 +72,24 @@ const Blog = (props) => {
         <div className={"container-md"}>
                 <div>
                     {content}
+                    <a onClick={()=> setCurrentPage(currentPage +1)}>
+                </a>
                 </div>
+                <a onClick={()=> paginationHandler(currentPage)}>
+                    moore
+                </a>
+          
                 <ReactPaginate
                     previousLabel={'<'}
-                    nextLabel={'>'}
+                    nextLabel={'Load more'}
                     breakLabel={'...'}
                     breakClassName={'break-me'}
                     activeClassName={'active'}
                     containerClassName={'pagination'}
                     subContainerClassName={'pages pagination'}
-                    initialPage={1}
+                    initialPage={currentPage}
                     pageCount={10}
-                    marginPagesDisplayed={2}
+                    marginPagesDisplayed={1}
                     pageRangeDisplayed={5}
                     onPageChange={paginationHandler} />
             </div></>
@@ -89,16 +97,18 @@ const Blog = (props) => {
     )
 }
 
-export async function getServerSideProps({query, req}) {
+export async function getServerSideProps({query}) {
     const page = query.page || 1; //if page empty we request the first page
-    const response = await fetch(`https://api.pandascore.co/matches/upcoming?sort=&page=${page}&per_page=5&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
+    const response = await fetch(`https://api.pandascore.co/matches/upcoming?sort=&page=${page}&per_page=10&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
    
    
     const posts = await response.json();
     return {
         props: {
             posts,
+        
         }
+       
       
     };
 }
