@@ -8,7 +8,7 @@ import {useEffect} from 'react'
 
 
 const fetcher = (url) => fetch(url).then((res) => res.json())
-const FETCH_URL = '../api/upcoming-cs'
+const FETCH_URL = '../api/upcoming-cs/'
 
 
 function CSCounter(props) {
@@ -18,9 +18,10 @@ function CSCounter(props) {
 
     if (error) return <div>Something went wrong...</div>
     if (!data) return <div>Loading...</div>
-  
+    {console.log(data)}
 
     return (
+      
         <div className='container is-fluid'>
             <div className="columns is-multiline">
 

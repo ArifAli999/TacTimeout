@@ -1,16 +1,18 @@
 /// <reference types="cypress" />
+import { mount } from '@cypress/react'
+import Navbar from '../../components/nav.js'
 
 // This is our test spec for the navigation of the website, we test for the routes, check if all the pages routes match the directories, 
 // Check if the menu is visible on different viewports. 
 // Check if menu is readable and accesible of different viewports.
 // Check if menu is reactive and responsive enough.
-// 
+// Unit test- Type : Menu
 
 describe('Navigation', () => {
   it('should navigate to the about page', () => {
     // Start from the index page
     cy.visit('http://localhost:3000/')
-    cy.get('.menubtn').click()
+    mount(<Navbar />)
 
     // Find a link with an href attribute containing "about" and click it
     cy.get(':nth-child(2) > .parentLink').click().wait(1000)

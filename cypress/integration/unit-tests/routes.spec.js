@@ -22,7 +22,7 @@ context('Live Page Route Check ', () => {
                     }
                 else {
                     // else get the fall back container.
-                    cy.get('.maincontainer')
+                    cy.get('.column')
                 }
 
 
@@ -49,7 +49,7 @@ context('Live Page Route Check ', () => {
                     }
                 else {
                     // else get the fall back container.
-                    cy.get('.maincontainer')
+                    cy.get('.column')
                 }
 
 

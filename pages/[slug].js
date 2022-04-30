@@ -1,6 +1,8 @@
 import { faTemperatureEmpty } from '@fortawesome/free-solid-svg-icons';
+import Head from 'next/head';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import Router from 'next/router';
 
 
 
@@ -32,17 +34,20 @@ export const getStaticProps = async (context) => {
   return {
     props: {
       game: data,
-      teams: data2
+      teams: data2,
+      slug
 
     }
   }
 
 }
-export default function Tournaments({ game, teams }) {
+export default function Tournaments({ game, teams,slug }) {
 
 
 
   return (
+    <>
+  
     <div className='container is-fluid'>
       <div className='nambar'>
 
@@ -117,5 +122,6 @@ export default function Tournaments({ game, teams }) {
         </div>
       </div>
     </div>
+    </>
   )
 }

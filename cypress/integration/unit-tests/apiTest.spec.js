@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
-
+// This is our test spec for the status of our API, we listen for a response.
+// The test fails if theres no response at all. This usually means all other tests of any kind will fail too.
+// Unit test- Type : General
 describe('Test the API Status', () => {
   
     it('Visit the API and check if you get a response', () => {
