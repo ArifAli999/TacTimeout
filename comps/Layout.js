@@ -17,7 +17,9 @@ const Layout = ({children},{router}) => {
     return (
     <div className='container'>
      <Head>
+
     <title> { titename.slice(1)} Page</title>
+
     </Head>
         <Navbar/>
         <div className="maincontainer">

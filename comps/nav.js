@@ -27,11 +27,11 @@ const Navbar = () => {
 
 
         <>
-            <button data-uk-toggle="target: #my-id" type="button" className="menubtn">
+            <button data-uk-toggle="target: #my-id" type="button" className="menubtn" aria-label="menu">
             <FontAwesomeIcon icon={faBars} />
                </button>
 
-            <a href="#my-id" data-uk-toggle></a>
+            <a href="#my-id" aria-label="menu" data-uk-toggle></a>
 
             <div id="my-id" data-uk-offcanvas>
                 <div className="uk-offcanvas-bar">
