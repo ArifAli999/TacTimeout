@@ -46,7 +46,7 @@ const Blog = (props) => {
         content = (
             <>
                 {props.posts.map(({ id, name }) => (
-                    <div className='s'>
+                    <div className='s' key={id}>
                         <img variant="top"  width={360} height={215} />
                         <div>
                             <div>
@@ -57,7 +57,7 @@ const Blog = (props) => {
                                 </Link>
                             </div>
                             <div className="mb-2 text-muted"></div>
-                            <div>
+                            <div key={name}>
                                 {name}
                             </div>
                         </div>
@@ -85,7 +85,7 @@ const Blog = (props) => {
                     containerClassName={'pagination'}
                     subContainerClassName={'pages pagination'}
                     initialPage={1}
-                    pageCount={50}
+                    pageCount={props.posts.length}
                     marginPagesDisplayed={2}
                     pageRangeDisplayed={5}
                     onPageChange={paginationHandler} />
