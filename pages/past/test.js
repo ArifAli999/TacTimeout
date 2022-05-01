@@ -8,60 +8,94 @@ import {Router, withRouter} from "next/router"
 
 const Blog = (props) => {
   
-    const [currentPage, setCurrentPage] = useState(0);
+    const [currentPage, setCurrentPage] = useState(1);
     const [isLoading, setLoading] = useState(false);
     const startLoading = () => setLoading(true);
     const stopLoading = () => setLoading(false);
 
-    useEffect(() => { //After the component is mounted set router event handlers
+    useEffect(() => { 
+        //After the component is mounted set router event handlers
+
         Router.events.on('routeChangeStart', startLoading);
         Router.events.on('routeChangeComplete', stopLoading);
-     
 
         return () => {
             Router.events.off('routeChangeStart', startLoading);
             Router.events.off('routeChangeComplete', stopLoading);
         }
-    }, [])
+    }, []);
+
+    React.useEffect(() => {
+        if(!props.games || !props.games.length) {
+          backToLastPage(currentPage)
+        }
+      },[props.games])
+    
+
+
 
     const paginationHandler = (page) => {
         const currentPath = props.router.pathname;
         const currentQuery = props.router.query;
-        currentQuery.page = (currentPage + 1);
+  
+
+        
+        props.router.push({
+            pathname: currentPath,
+            query: currentQuery,
+        })
+        setCurrentPage(currentQuery.page)
+    }
+
+    const backToLastPage = (page) => {
+        setCurrentPage(currentPage-1)
+        const currentPath = props.router.pathname;
+        const currentQuery = currentPage;
         setCurrentPage(currentQuery.page)
         props.router.push({
             pathname: currentPath,
             query: currentQuery,
         })
-
+       
     }
 
     let content;
     if (isLoading) {
         content = (
             <div >
-               loading
+               <h2 class="loading-text">loading.</h2>
             </div>
         )
     } else {
         //Generating posts list
         content = (
-            <>
-                {props.posts.map((post) => (
-                    <div className='s' key={post.id}>
-                        <img variant="top"  width={360} height={215} />
-                        <div>
-                            <div>
-                             
-                            </div>
-                            <div className="mb-2 text-muted"></div>
-                            <div key={post.name}>
-                                {post.name}
+            <div className="container">
+            <h2> Live Games  - </h2>
+            
+            <div className="columns is-multiline">
+                
+                {props.games.map(q => (
+                    <div className="column is-half" key={q.id}>
+                        <div className="inner">
+                            <div className="inner__box">
+                                <Link href={'/live/' + q.slug} key={q.slug}>
+                                    <a className="h2link" key={q.slug} data-cy="id"> {q.name}</a>
+                                </Link>
+                                {/*
+            {q.opponents.map(({opponent}) => (
+<span key={opponent.id} className={opponent.acronym}>
+{opponent.name}
+({q.results.find((result) => result.team_id === opponent.id).score})
+</span>     ))}*/}
+                                <span className="is-pulled-right tag is-danger">
+                                    LIVE
+                                </span>
                             </div>
                         </div>
                     </div>
                 ))}
-            </>
+            </div>
+            </div> 
         );
     }
    
@@ -72,26 +106,11 @@ const Blog = (props) => {
         <div className={"container-md"}>
                 <div>
                     {content}
-                    <a onClick={()=> setCurrentPage(currentPage +1)}>
-                </a>
+                  
                 </div>
-                <a onClick={()=> paginationHandler(currentPage)}>
-                    moore
-                </a>
+             {props.games.length ? (<a onClick={()=> paginationHandler(currentPage)}>  moore </a>) : ( ()=> backToLastPage(currentPage) )}   
           
-                <ReactPaginate
-                    previousLabel={'<'}
-                    nextLabel={'Load more'}
-                    breakLabel={'...'}
-                    breakClassName={'break-me'}
-                    activeClassName={'active'}
-                    containerClassName={'pagination'}
-                    subContainerClassName={'pages pagination'}
-                    initialPage={currentPage}
-                    pageCount={10}
-                    marginPagesDisplayed={1}
-                    pageRangeDisplayed={5}
-                    onPageChange={paginationHandler} />
+             
             </div></>
     
     )
@@ -102,10 +121,10 @@ export async function getServerSideProps({query}) {
     const response = await fetch(`https://api.pandascore.co/matches/upcoming?sort=&page=${page}&per_page=10&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
    
    
-    const posts = await response.json();
+    const data = await response.json();
     return {
         props: {
-            posts,
+            games: data
         
         }
        

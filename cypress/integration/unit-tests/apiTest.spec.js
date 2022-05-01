@@ -19,8 +19,4 @@ describe('Test the API Status', () => {
     it('Check the past games response', () => {
       cy.request('https://api.pandascore.co/matches/past?token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0')
     })
-
-    it('Check the tournaments response', () => {
-      cy.request('https://api.pandascore.co/tournaments/?token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0')
-    })
   })

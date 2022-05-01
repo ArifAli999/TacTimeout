@@ -144,7 +144,9 @@ export default function LiveGame({ game, plays }) {
 
                 </section>
 
-                <section className="tab-content">
+               {plays.opponents.length ? (
+
+<section className="tab-content">
 <div className='columns is-multiline'>
                 <div className="column is-half">
                   {plays.opponents.slice(0,-1).map((y) => (
@@ -187,6 +189,7 @@ export default function LiveGame({ game, plays }) {
 
                 </div>
                 </section>
+               ): (<p>No players</p>)} 
 
                 <section className="tab-content">
                 <div className="column is-full">

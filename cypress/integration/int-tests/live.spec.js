@@ -1,22 +1,5 @@
 /// <reference types="cypress" />
 
-describe('Check the Live Games Component', () => {
- 
-    context('SSR Props Test ', () => {
-        beforeEach(() => {
-          cy.visit('http://localhost:3000/live/');
-        });
-      
-        it('should render our list of LIVE games', () => {
-          cy.get('.inner__box').each((item, index) => {
-            cy.wrap(item).should('exist');
-          });
-        });
-      });
-
-
-})
-
 
 
 describe('Check for Valorant Page and data.', () => {
@@ -106,9 +89,8 @@ describe('Check for FIFA Page and data.', () => {
                     cy.get('a.h2link').click()
                     cy.url().should('include', '/live')// check for the dynamic slug
                     cy.contains('Game Info', { timeout: 600000 }); // check if the slug plage is loaded.
-                    cy.get('a.gamelinks').click({ multiple: true }, { timeout: 600000 }) // check if the information is loaded on the slug page.
-                    cy.get('a.gamelinks').first().click()   // check if the tabbed navs are working.
-                    cy.get('.lower-box').find('.dark') // end test by testing for data again.
+                    cy.get('a.gamelinks').click({ multiple: true }, { timeout: 60000 }) // check if the information is loaded on the slug page.
+                   
 
                 }
                 else {

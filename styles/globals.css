@@ -571,3 +571,51 @@ h2.team_name {
   color: #fff;
   font-weight: bold;
 }
+
+p.white-fallback {
+  color: #fff;
+  padding: 1rem 1.2rem;
+  font-weight: 800;
+  background: #000;
+}
+button.hiddenbtn {
+  display: none;
+}
+
+button.hiddenbtn.visible {
+  display: block;
+}
+.container-md {
+  margin-bottom: 2rem;
+}
+
+button.loadbtn {
+  /* text-align: center; */
+  background: purple;
+  padding: 0.86rem 2.2rem;
+  border: 0px;
+  border-radius: 24px;
+  color: #fff;
+  font-weight: 800;
+  opacity: 0.9;
+  box-shadow: 1px 2px 3px #000;
+  cursor: pointer;
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+}
+button.loadbtn:hover {
+  background: #8c068c;
+  transition: background ease-in 0.4s;
+  opacity: 1;
+}
+
+.loadmorecont {
+  text-align: center;
+}
+
+a.parentLink.active {
+  color: red;
+  /* background: pink; */
+  border-bottom: 2px solid #ff11ff;
+  transition: border-bottom ease-in 0.4s;
+}

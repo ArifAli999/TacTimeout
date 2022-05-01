@@ -143,60 +143,63 @@ export default function UpcomingGame({ game, plays }) {
 
                 </section>
 
+
+
                 <section className="tab-content">
-<div className='columns is-multiline'>
-                <div className="column is-half">
-                  {plays.opponents.slice(0,-1).map((y) => (
-                    
-                      <>
-                  <div className="teamblock" key={y.id}>{y.name}</div>
-                      <div className='pl'>
-                        {y.players.map((player) => (
-                          <>
-                        {player.name && (<div className="opp2 dark" key={y.slug} id={y.slug}>
-                        <p key={player.id}>
-                          {player.name ? (<span>{player.name}</span>) :(<p>Sorry, No players for this game.</p>)}
+                  <div className='columns is-multiline'>
+                    <div className="column is-half">
+                      {plays.opponents.slice(0, -1).map((y) => (
 
-                        </p>
-                      </div>)}</>
-                        ))}
-                        </div></>
-                  ))}
-                </div>
+                        <>
+                    <div className="teamblock" key={y.id}>{y.name}</div>
+                          <div className='pl'>
+                            {y.players.length ? (y.players.map((player) => (
+                              <>
+                                {player.name && (<div className="opp2 dark" key={y.slug} id={y.slug}>
+                                  <p key={player.id}>
+                                    {player.name.length ? <span>{player.name}</span>: <p>Sorry, No players for this game.</p>}
+
+                                  </p>
+                                </div>)}</>
+                            ))): <p className="white-fallback">No players found</p>}
+                          </div></>
+                      ))}
+                    </div>
 
 
-                <div className="column is-half">
-                  {plays.opponents.slice(-1).map((y) => (
-                    <>
-                  <div className="teamblock alt" key={y.id}>{y.name}</div>
-                  <div className='pl'>
-                        {y.players.map((player) => (
-                          <>
-                        {player.name && (<div className="opp2 dark" key={y.slug} id={y.slug}>
-                        <p key={player.id}>
-                          {player.name ? (<span>{player.name}</span>) :(<p>Sorry, No players for this game have been released.</p>)}
+                    <div className="column is-half">
+                      {plays.opponents.slice(-1).map((y) => (
 
-                        </p>
-                      </div>)}</>
-                        ))}
-                        </div>
+                        <>
+                    <div className="teamblock" key={y.id}>{y.name}</div>
+                          <div className='pl'>
+                            {y.players.length ? (y.players.map((player) => (
+                              <>
+                                {player.name && (<div className="opp2 dark" key={y.slug} id={y.slug}>
+                                  <p key={player.id}>
+                                    {player.name.length ? <span>{player.name}</span>: <p>Sorry, No players for this game.</p>}
 
-                    </>))}
-                </div>
+                                  </p>
+                                </div>)}</>
+                            ))): <p className="white-fallback">No players found</p>}
+                          </div></>
+                      ))}
+                    </div>
 
-                </div>
+                  </div>
                 </section>
+                
 
                 <section className="tab-content">
-                <div className="column is-full">
-        
-                <div className="twitch" key={g.live_embed_url}>
-                   <div className="twitch-video">
-                     {g.live_embed_url ? (<iframe src={`${g.live_embed_url}&parent=riffyraff.me`} frameBorder="0" allowFullScreen="true" scrolling="no" height="300" width="100%">
-                     </iframe>)
-                       : <p>Sorry No Streams found please follow this link   <a href={g.streams.official.embed_url}>Watch now</a> - </p>
-                     }</div></div>
-                </div>
+                  <div className="column is-full">
+
+                    <div className="twitch" key={g.live_embed_url}>
+                      <div className="twitch-video">
+                        {g.live_embed_url ? (<iframe src={`${g.live_embed_url}&parent=riffyraff.me`} frameBorder="0" allowFullScreen="true" scrolling="no" height="300" width="100%">
+                        </iframe>)
+                          : <p>Sorry No Streams found please follow this link   <a href={g.streams.official.embed_url}>Watch now</a> - </p>
+                        }</div></div>
+                  </div>
                 </section>
 
               </div>
@@ -215,7 +218,7 @@ export default function UpcomingGame({ game, plays }) {
         </div>
       ))}
 
-   
+
 
 
     </div>

@@ -36,11 +36,11 @@ const Navbar = () => {
             <div id="my-id" data-uk-offcanvas>
                 <div className="uk-offcanvas-bar">
 
-                    <ul class="uk-nav-default uk-nav-parent-icon" data-uk-nav>
+                    <ul className="uk-nav-default uk-nav-parent-icon" data-uk-nav>
                         <Link href="/" ><li className="uk-nav" onClick={hideMenu()}><a href="">Home</a></li></Link>
                         <li className="uk-parent">
                             <a href="#" className="parentLink">Live Games</a>
-                            <ul class="uk-nav-sub" onClick={hideMenu()}>
+                            <ul className="uk-nav-sub" onClick={hideMenu()}>
 
                             <li className="sub-links">
                                 <span className={router.pathname == "/live/val" ? "is-pulled-right valImg onn " : "is-pulled-right valImg"}></span>
@@ -72,7 +72,7 @@ const Navbar = () => {
                         </li>
                         <li className="uk-parent">
                             <a href="#" className="parentLink">Upcoming Games</a>
-                            <ul class="uk-nav-sub">
+                            <ul className="uk-nav-sub">
 
 
                                     <li className="sub-links">  
@@ -98,7 +98,7 @@ const Navbar = () => {
 
                         <li className="uk-parent">
                             <a href="#" className="parentLink">Past Games</a>
-                            <ul class="uk-nav-sub">
+                            <ul className="uk-nav-sub">
 
                                 <li className="sub-links">
                                 <span className={router.pathname == "/past/valp" ? "is-pulled-right valImg onn " : "is-pulled-right valImg"}></span>
