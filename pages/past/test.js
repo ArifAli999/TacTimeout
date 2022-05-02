@@ -63,7 +63,7 @@ const Blog = (props) => {
     if (isLoading) {
         content = (
             <div >
-               <h2 class="loading-text">loading.</h2>
+               <h2 className="loading-text">loading.</h2>
             </div>
         )
     } else {

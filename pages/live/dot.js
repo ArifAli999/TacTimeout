@@ -1,39 +1,69 @@
 import React from 'react';
 import Moment from 'react-moment';
 import Link from 'next/link';
-import '../../comps/Fallback'
 import Fallback from '../../comps/Fallback';
-
-function DotLive({ dotres }) {
+function Valorant({ valres }) {
 
     return (
         <div className='container is-fluid'>
             <div className="columns is-multiline">
 
-                {dotres.length ? (
+                {valres.length ? (
                     <>
-                        {dotres.map(q => (
-                            <div className="column is-half" key={q.slug}>
-                                <div className="inner">
-                                    <div className="inner__box">
-                                        <Link href={'/live/' + q.slug} key={q.slug}>
-                                            <a className="h2link" key={q.name}>
-                                                {q.name}
-                                            </a>
-                                        </Link>
+                        {valres.map(q => (
+                            <div className="column is-half" key={q.id}>
+                                <div className='scorebox columns is-multiline'>
+                                    <div className='first column is-full'>
+                                        {q.opponents.slice(0, -1).map(({ opponent }) => (
+                                              <>
+                                              
+                                              {opponent.image_url ? (<div className='imgtinycont'><img src={opponent.image_url} className="teamlogo-small"></img></div>) : (<div className='placehoder-img'></div>)}
+                                              <><div key={opponent.id} className={opponent.acronym}>
 
-                                        <span className="is-pulled-right tag is-danger">
-                                            <Moment fromNow>{q.scheduled_at}</Moment>
-                                        </span>
+                                                <Link href={'/live/' + q.slug} key={q.slug}>
+
+
+                                                    <a className="h2link" key={q.slug}>
+                                                        {opponent.name}
+                                                    </a>
+                                                </Link>
+
+                                            </div><span className='score-live is-pulled-right'>
+                                                    {q.results.find((result) => result.team_id === opponent.id).score}
+                                                </span></></>
+
+                                        ))}
                                     </div>
+                                    <div className='second column is-full'>
+                                    {q.opponents.slice(-1).map(({ opponent }) => (
+                                         <><div className='imgtinycont'><img src={opponent.image_url} className="teamlogo-small"></img></div><><span key={opponent.id} className={opponent.acronym}>
+
+                                            <Link href={'/live/' + q.slug} key={q.slug}>
+                                                <a className="h2link" key={q.slug}>
+                                                    {opponent.name}
+                                                </a>
+                                            </Link>
+
+                                        </span><span className='score-live is-pulled-right'>
+                                                {q.results.find((result) => result.team_id === opponent.id).score}
+                                            </span></></>
+
+                                        ))}
+                                    </div>
+
+                                   
+
+
                                 </div>
+                             
                             </div>
                         ))}
                     </>) : (
-                    
-                    <Fallback title={'Dota'}/>
-                    
-                    )}
+
+                    <Fallback title={'Valorant'} />
+
+
+                )}
 
             </div>
         </div>
@@ -42,18 +72,18 @@ function DotLive({ dotres }) {
 
 export async function getServerSideProps() {
 
-    const dotaresult = await fetch(`https://api.pandascore.co/matches/running?filter[videogame]=dota-2&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
+    const valresult = await fetch(`https://api.pandascore.co/matches/running?filter[videogame]=dota-2&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
 
 
-    const data = await dotaresult.json();
+    const valdata = await valresult.json();
 
 
     return {
-        props: { dotres: data },
-  
+        props: { valres: valdata },
+
     };
 
 }
 
 
-export default DotLive;
+export default Valorant;

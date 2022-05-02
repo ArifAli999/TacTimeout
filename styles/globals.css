@@ -1,16 +1,29 @@
 @import "bulma/css/bulma.css";
 
-html,
-body {
+
+
+
+html,body {
+
   height: 100%;
-  margin: 0;
-  padding: 0;
-  background: url(https://images.unsplash.com/photo-1563089145-599997674d42?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80);
+  background-image: linear-gradient(to right top, #ff00e6, #d300aa, #a40877, #74124c, #44132a, #361023, #290d1b, #1e0613, #2a091f, #36082f, #3e0942, #420e58) !important;
   background-repeat: round;
   background-attachment: fixed;
   background-size: cover;
-  background-color: rgb(117 91 117 / 59%);
+  background: none;
+  background-color: none !important;
+ }
+ 
+
+
+#__next {
+  background-image: linear-gradient(to right top, #ff00e6, #d300aa, #a40877, #74124c, #44132a, #361023, #290d1b, #1e0613, #2a091f, #36082f, #3e0942, #420e58);
+  background-repeat: round;
+  background-attachment: fixed;
+  background-size: cover;
   background-blend-mode: color-burn;
+  height: auto;
+
 }
 
 .scoreBox {
@@ -233,7 +246,10 @@ span.scores {
   border-radius: 10px;
   margin-top: 8%;
 }
-@media (max-width: 700px) {
+@media only screen and (max-width: 700px) {
+  span.prize {
+    font-size: 0.98vh !important;
+  }
   span.is-pulled-right,
   span.is-pulled-left {
     font-size: 1vh;
@@ -612,10 +628,57 @@ button.loadbtn:hover {
 .loadmorecont {
   text-align: center;
 }
+span.score-live.is-pulled-right {
+  -webkit-font-smoothing: subpixel-antialiased;
+  font-weight: 800;
+  color: #ff42fd;
+  text-align: right;
+  font-size: 1.5vh;
+}
+img.teamlogo-small {
+  border-radius: 3rem;
+  background: rgb(169 58 190 / 58%);
+  padding: 6.22px;
+  background-attachment: fixed;
+  background-position: cov;
+}
 
-a.parentLink.active {
-  color: red;
-  /* background: pink; */
-  border-bottom: 2px solid #ff11ff;
-  transition: border-bottom ease-in 0.4s;
+.first.column.is-full {
+  grid-template-columns: 10% 70% 20%;
+  padding: 1.5rem 1.3rem;
+  color: #fff;
+  font-weight: 800;
+  border-bottom: 2px solid #0c0c0c;
+  display: grid;
+}
+.second.column.is-full {
+  grid-template-columns: 10% 70% 20%;
+  padding: 1.5rem 1.3rem;
+  color: #fff;
+  font-weight: 800;
+  border-bottom: 2px solid #0c0c0c;
+  display: grid;
+}
+
+.scorebox.columns.is-multiline {
+  background: rgb(0 0 0 / 87%);
+  border-radius: 12px !important;
+  box-shadow: 1px 2px 8px 2px #000;
+  opacity: 0.98;
+  margin: 1px;
+
+}
+.imgtinycont {
+    width: 30px;
+    height: 30px;
+}
+
+.placehoder-img {
+  background: purple;
+  width: 30px;
+  height: 30px;
+  border-radius: 3rem;
+  background: rgb(169 58 190 / 58%);
+  padding: 6.22px;
+  background-attachment: fixed;
 }

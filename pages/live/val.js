@@ -12,24 +12,52 @@ function Valorant({ valres }) {
                     <>
                         {valres.map(q => (
                             <div className="column is-half" key={q.id}>
-                                <div className="inner">
-                                    <div className="inner__box">
-                                        <Link href={'/live/' + q.slug} key={q.slug}>
+                                <div className='scorebox columns is-multiline'>
+                                    <div className='first column is-full'>
+                                        {q.opponents.slice(0, -1).map(({ opponent }) => (
+                                              <><div className='imgtinycont'><img src={opponent.image_url} className="teamlogo-small"></img></div>
+                                              <><div key={opponent.id} className={opponent.acronym}>
+
+                                                <Link href={'/live/' + q.slug} key={q.slug}>
+
+
+                                                    <a className="h2link" key={q.slug}>
+                                                        {opponent.name}
+                                                    </a>
+                                                </Link>
+
+                                            </div><span className='score-live is-pulled-right'>
+                                                    {q.results.find((result) => result.team_id === opponent.id).score}
+                                                </span></></>
+
+                                        ))}
+                                    </div>
+                                    <div className='second column is-full'>
+                                    {q.opponents.slice(-1).map(({ opponent }) => (
+                                            <><span key={opponent.id} className={opponent.acronym}>
+                                               <Link href={'/live/' + q.slug} key={q.slug}>
                                             <a className="h2link" key={q.slug}>
-                                                {q.name}
+                                                {opponent.name}
                                             </a>
                                         </Link>
 
-                                        <span className="is-pulled-right tag is-danger">
-                                            <Moment fromNow>{q.scheduled_at}</Moment>
-                                        </span>
+                                            </span><span className='score-live is-pulled-right'>
+                                                    {q.results.find((result) => result.team_id === opponent.id).score}
+                                                </span></>
+
+                                        ))}
                                     </div>
+
+                                   
+
+
                                 </div>
+                             
                             </div>
                         ))}
                     </>) : (
 
-                    <Fallback title={'CS:GO'} />
+                    <Fallback title={'Valorant'} />
 
 
                 )}

@@ -23,9 +23,7 @@ const LiveIndex = (props) => {
     }, []);
     React.useEffect(() => {
       if(!props.games || !props.games.length) {
-      
-        backToLastPage(currentPage)
-     
+        backToLastPage(currentPage);
       }
     },[props.games])
   
@@ -67,7 +65,7 @@ const LiveIndex = (props) => {
     if (isLoading) {
       content = (
         <div>
-          <h2 class="loading-text">loading.</h2>
+          <h2 className="loading-text">loading.</h2>
         </div>
       );
     } else {

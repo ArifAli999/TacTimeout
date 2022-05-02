@@ -1,6 +1,9 @@
 import useSWR from 'swr'
 import { useEffect, useState } from 'react'
 import axios from 'axios';
+import Head from 'next/head';
+import Link from 'next/link';
+import Moment from 'react-moment';
 
 // example of SWR fetching - that could be used but wasn't used due to API restrictions.
 // SWR is a React Hooks library for data fetching.
@@ -11,38 +14,59 @@ const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 
 const SWRTest = () => {
-  const [page, setPage] = useState(1);
+ 
   const { data, error } = useSWR(
-    `https://api.pandascore.co/matches/upcoming?sort=&page=${page}&per_page=30&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`,
+    `api/upcoming-cs`,
     fetcher
   );
-  console.log(data)
-  console.log(page)
 
 
-  if (error) return <div>Something went wrong...</div>
-  if (!data) return <div>Loading...</div>
+
+  if (error) return <div><p className='white-text'>Something went wrong...</p></div>
+  if (!data) return <div><p className='white-text'>Please hang on</p></div>
 
   return (
-    <ul role="list">
-      <button
+    <div>
+      <Head>
+        <title>Tac Timeout</title>
 
-        onClick={() => setPage(page - 1)}
-      >
-        Previous
-      </button>
+      </Head>
+    <div className="tourBox columns is-multiline is-mobile">
+    <h2 className="tourhead">Hottest Tournaments</h2>
+  {data.map((tour) => (
 
-      <button
+    <>
+      
+      
+       
+     <div className="column is-full tourInfo">
+       <div className="tour-name">
+          <Link href = {'/tournaments/' + tour.slug}  key={tour.slug}>
+            <p className="tourtitle">{tour.name}</p>
+            </Link>
+         <span className="prize">{tour.prizepool}</span><br/>
+       
 
-        onClick={() => setPage(page + 1)}
-      >
-        Next
-      </button>
-      {data &&
-        data.map((game) => (
-          <li key={game.id}>{game.name}</li>
-        ))}
-    </ul>
+           
+          <span className="timeiconn" key={tour.id}>
+           <Moment format="DD MMM">{tour.begin_at}</Moment>
+           {tour.end_at && (
+          <> - <Moment format="DD MMM">{tour.end_at}</Moment></>
+        )}
+        </span>
+        </div>
+        </div>
+      
+
+        <p> {console.log(tour)}</p>
+
+        
+  
+    </>
+  ))}
+
+</div>
+</div>
   )
 }
 

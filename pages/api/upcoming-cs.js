@@ -22,9 +22,10 @@ function runMiddleware(req, res, fn) {
 async function handler(req, res) {
   // Run the middleware
   await runMiddleware(req, res, cors)
-  const response = await fetch('https://api.pandascore.co/matches/upcoming?filter[videogame]=cs-go&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0')
-  const jsonData = await response.json()
-  res.status(200).json(jsonData)
+  const response = await fetch('https://api.pandascore.co/tournaments/?sort=&page=1&per_page=50&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0')
+  const jsonData = await response.json();
+  const filteredData = jsonData.filter(x=> x.prizepool !==null)
+  res.status(200).json(filteredData);
 }
 
 
@@ -32,7 +33,7 @@ async function handler(req, res) {
 
 
 export default handler
-// fetch upcoming CS:GO games.
+// fetch tournaments with a prizepool.
 
 
 
