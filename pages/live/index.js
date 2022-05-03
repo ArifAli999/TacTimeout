@@ -44,6 +44,9 @@ const LiveIndex = (props) => {
     };
   
     const backToLastPage = (page) => {
+      if(currentPage==1 && !props.games.length) {
+        <Fallback/>
+      }
       
       const currentPath = props.router.pathname;
       const currentQuery = props.router.query;
@@ -72,50 +75,76 @@ const LiveIndex = (props) => {
       //Generating posts list
   
       content = (
-        <div className="container">
-        <h2> Live Games  - </h2>
-        
+        <div className='container is-fluid'>
         <div className="columns is-multiline">
-          {props.games.length ? (
-            <>
-            {props.games.map(q => (
-              <div className="column is-half" key={q.id}>
-                  <div className="inner">
-                      <div className="inner__box">
-                          <Link href={'/live/' + q.slug} key={q.slug}>
-                              <a className="h2link" key={q.slug} data-cy="id"> {q.name}</a>
-                          </Link>
-                          {/*
-      {q.opponents.map(({opponent}) => (
-<span key={opponent.id} className={opponent.acronym}>
-{opponent.name}
-({q.results.find((result) => result.team_id === opponent.id).score})
-</span>     ))}*/}
-                          <span className="is-pulled-right tag is-danger">
-                              LIVE
-                          </span>
-                      </div>
-                  </div>
-              </div>
-          ))}
-          </>
-          )
-          : (<div>
-            <Fallback/>
-          </div>)  
-        }
-            
-            
+
+            {props.games.length ? (
+                <>
+                    {props.games.map(q => (
+                        <div className="column is-half" key={q.id}>
+                            <div className='scorebox columns is-multiline'>
+                                <div className='first column is-full'>
+                                    {q.opponents.slice(0, -1).map(({ opponent }) => (
+                                          <>
+                                          
+                                          {opponent.image_url ? (<div className='imgtinycont'><img src={opponent.image_url} className="teamlogo-small"></img></div>) : (<div className='placehoder-img'></div>)}
+                                          <><div key={opponent.id} className={opponent.acronym}>
+
+                                            <Link href={'/live/' + q.slug} key={q.slug}>
+
+
+                                                <a className="h2link" key={q.slug}>
+                                                    {opponent.name}
+                                                </a>
+                                            </Link>
+
+                                        </div><span className='score-live is-pulled-right'>
+                                                {q.results.find((result) => result.team_id === opponent.id).score}
+                                            </span></></>
+
+                                    ))}
+                                </div>
+                                <div className='second column is-full'>
+                                {q.opponents.slice(-1).map(({ opponent }) => (
+                                     <><div className='imgtinycont'><img src={opponent.image_url} className="teamlogo-small"></img></div><><span key={opponent.id} className={opponent.acronym}>
+
+                                        <Link href={'/live/' + q.slug} key={q.slug}>
+                                            <a className="h2link" key={q.slug}>
+                                                {opponent.name}
+                                            </a>
+                                        </Link>
+
+                                    </span><span className='score-live is-pulled-right'>
+                                            {q.results.find((result) => result.team_id === opponent.id).score}
+                                        </span></></>
+
+                                    ))}
+                                </div>
+
+                               
+
+
+                            </div>
+                         
+                        </div>
+                    ))}
+                </>) : (
+
+                <Fallback title={'Valorant'} />
+
+
+            )}
+
         </div>
-        </div> 
+    </div>
       );
     }
   
     return (
       <>
-        <div className={"container-md"}>
-          <div>{content}</div>
-        </div>
+       
+          <div>{content}</div><br/>
+
         {props.games.length && (
           <div className='loadmorecont'>
             <button className="loadbtn" onClick={() => paginationHandler(currentPage)}> Load More </button></div>

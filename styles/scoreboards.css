@@ -1,13 +1,13 @@
 .scoreboards {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: flex;
     justify-items: center;
     color: #fff;
     margin-bottom: 3rem;
-    background: rgb(154 134 134 / 39%);
-    padding: 2rem;
+    background: rgb(0 0 0 / 63%);
+    padding: 1rem;
     border-radius: 8px;
-    box-shadow: inset 0px 1px 20px 6px rgb(163 17 225 / 67%);
+   
+    justify-content: space-between;
 
 }
 img.team-img.is-rounded {
@@ -27,4 +27,22 @@ figure.immage-box {
     font-weight: 800;
     text-shadow: 2px 9px 8px rgb(0 0 0 / 85%);
     
+}
+
+
+.opponentBoard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.innerteam_cont {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+p.score-big, span.score-big {
+    font-weight: bold;
+    color: magenta;
 }

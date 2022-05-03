@@ -1,0 +1,42 @@
+.quick-nav {
+    float: right;
+    margin-top: 2rem;
+    margin-right: 2rem;
+    background: ;
+}
+
+span.is-pulled-right.valImg.onn.custom,span.is-pulled-right.fifImg.custom,span.is-pulled-right.csImg.custom,,span.is-pulled-right.dotImg.custom {
+    cursor: pointer;
+    opacity: 0.76;
+    width: 2rem;
+    height: 2rem;
+}
+
+
+
+
+
+span.is-pulled-right.csImg.custom:hover {
+    background: orange;
+    cursor: pointer;
+    opacity: 1;
+    transition: background ease-in 0.88s;
+}
+span.is-pulled-right.valImg.custom:hover {
+    background: rgb(133 36 235 / 87%);
+    cursor: pointer;
+    opacity: 1;
+    transition: background ease-in 0.88s;
+}
+span.is-pulled-right.fifImg.custom:hover {
+    background:cyan;
+    cursor: pointer;
+    opacity: 1;
+    transition: background ease-in 0.88s;
+}
+span.is-pulled-right.dotImg.custom:hover {
+    background:red;
+    cursor: pointer;
+    opacity: 1;
+    transition: background ease-in 0.88s;
+}

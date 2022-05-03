@@ -6,10 +6,9 @@ function Fallback({title}) {
     <div className='error-box'>
         <div className="notification is-danger">
             
-            Sorry there are currently no <strong>LIVE {title}</strong> games right now <br/><br/>
-            For a full list of live games right now please follow this link <strong>
+            Sorry there are currently no <strong>LIVE {title}</strong> games right now,
            
-            </strong>
+          
         </div>
 
     </div>

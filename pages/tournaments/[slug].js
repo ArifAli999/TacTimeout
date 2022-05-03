@@ -57,7 +57,7 @@ export default function Tournaments({ game, teams,slug }) {
             <img className="tour-img" src={game.league.image_url}></img>
           </div>
           <div className='namfullbox'>
-            <p className='namefull'> {game.name} - {game.full_name}
+            <p className='namefull'> {game.name} - <span className='data-league'>{game.full_name}</span>
 
             </p>
             <span className='sub'>{game.league.name}</span>

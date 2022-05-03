@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 
 
@@ -39,6 +39,16 @@ export const getStaticProps = async (context) => {
 
 // MAIN RENDER FUNCTION 
 export default function UpcomingGame({ game, plays }) {
+  const [openModal, setOpenModal] = useState(false);
+  const [openModals, setOpenModals] = useState(false);
+
+  function toggleMenu() {
+    setOpenModal(!openModal)
+  }
+  function toggleMenu2() {
+    setOpenModals(!openModals)
+  }
+
   useEffect(() => {
     let tabsWithContent = (function () {
       let tabs = document.querySelectorAll('.tabs li');
@@ -151,15 +161,30 @@ export default function UpcomingGame({ game, plays }) {
                       {plays.opponents.slice(0, -1).map((y) => (
 
                         <>
-                    <div className="teamblock" key={y.id}>{y.name}</div>
+                    <div className="teamblock" key={y.id}>
+                      {y.name}
+                    <button className='toggle-modal' onClick={() => toggleMenu()}>
+                                More Info
+                              </button>
+                    </div>
                           <div className='pl'>
                             {y.players.length ? (y.players.map((player) => (
                               <>
                                 {player.name && (<div className="opp2 dark" key={y.slug} id={y.slug}>
-                                  <p key={player.id}>
-                                    {player.name.length ? <span>{player.name}</span>: <p>Sorry, No players for this game.</p>}
+                                  <div key={player.id}>
+                                    {player.name.length ? 
+                                    <div key={player.slug} className="playerlist">
+                                     <div className="player-name">{player.name}</div>
+                                      {(openModal && player.last_name) ? (<div className="player-age">{player.last_name}</div>) : null}
 
-                                  </p>
+                                       {(openModal && player.hometown) ? (<div className="player-age">{player.hometown}</div>) : null}
+                                       {openModal ? (<div className="player-age">{player.age}</div>) : null}
+                                      </div>
+                                      
+                                      
+                                      : <p>Sorry, No players for this game.</p>}
+
+                                  </div>
                                 </div>)}</>
                             ))): <p className="white-fallback">No players found</p>}
                           </div></>
@@ -171,15 +196,27 @@ export default function UpcomingGame({ game, plays }) {
                       {plays.opponents.slice(-1).map((y) => (
 
                         <>
-                    <div className="teamblock" key={y.id}>{y.name}</div>
+                    <div className="teamblock alt" key={y.id}>{y.name}
+                    <button className='toggle-modal light' onClick={() => toggleMenu2()}>
+                                More Info
+                              </button></div>
                           <div className='pl'>
                             {y.players.length ? (y.players.map((player) => (
                               <>
                                 {player.name && (<div className="opp2 dark" key={y.slug} id={y.slug}>
-                                  <p key={player.id}>
-                                    {player.name.length ? <span>{player.name}</span>: <p>Sorry, No players for this game.</p>}
+                                  <div key={player.id}>
+                                    {player.name.length ? 
+                                    <div key={player.slug} className="playerlist">
+                                      <div className="player-name">{player.name}</div>
+                                      {(openModals && player.last_name) ? (<div className="player-age">{player.last_name}</div>) : null}
 
-                                  </p>
+                                    {openModals && player.hometown ? (<div className="player-age">{player.hometown}</div>) : null}
+                                    {openModals ? (<div className="player-age">{player.age}</div>) : null}
+                                    </div>
+                                    
+                                    : <p>Sorry, No players for this game.</p>}
+
+                                  </div>
                                 </div>)}</>
                             ))): <p className="white-fallback">No players found</p>}
                           </div></>

@@ -190,6 +190,29 @@ button.uk-button.menu_but.is-pulled-right:hover {
   margin-right: 3%;
   padding: 4%;
 }
+a.white-link {
+  float: right;
+  text-transform: uppercase;
+}
+
+.fallback-comp {
+  background: #000;
+  padding: 1rem 1rem;
+  color: #e60af6;
+  font-weight: 800;
+  letter-spacing: 1.3px;
+}
+.team-name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.logoiconsbox.is-flex {
+  justify-content: center;
+  gap: 1.44rem;
+}
 
 h2.h2__whiteuk-text-large {
   color: #fff;
@@ -322,10 +345,15 @@ div#CS\:GO {
   /* text-align: center; */
   color: #fff;
   line-height: 2;
+  display: flex;
+  justify-content: space-between;
 }
 
 .teamblock.alt {
   background: peru;
+}
+button.toggle-modal.light {
+  background: #7e5323;
 }
 
 .gameCat {
@@ -681,4 +709,21 @@ img.teamlogo-small {
   background: rgb(169 58 190 / 58%);
   padding: 6.22px;
   background-attachment: fixed;
+}
+button.toggle-modal {
+  background: #3f0870;
+  border: 0px;
+  float: right;
+  text-align: center;
+  font-weight: 600;
+  color: #fff;
+  padding: 1%;
+  border-radius: 8px;
+  padding: 9px;
+}
+.playerlist {
+  display: grid;
+
+
+    grid-template-columns: 1.5fr 1.5fr 1.3fr 0fr;
 }
