@@ -25,9 +25,10 @@ import axios from "axios";
     }
   
     return <div>
-      <p>{totalUsers} users listed</p>
+     
       {data.map((users, index) => {
         // `data` is an array of each page's API response.
+        
         return users.map(user => <div key={user.id}>{user.name} - {user.prizepool}</div>)
       })}
       <button onClick={() => setSize(size + 1)}>Load More</button>
