@@ -37,7 +37,7 @@ import { FaRandom } from 'react-icons/fa'
        
         return users.map((user) => 
         (
-          <div className="column is-full tourInfo">
+          <div className="column is-full tourInfo" key={user.id}>
 
         <div className="tour-name" key={user.id}>
            <Link href = {'/tournaments/' + user.slug}  key={user.slug}>
