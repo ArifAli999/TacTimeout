@@ -74,7 +74,7 @@ a.h2link {
   color: #fff;
   transition: ease-in 0.3s opacity;
   font-weight: 600;
-  background-image: linear-gradient(to right, #ffe08a, #f14668 50%, #fff 50%);
+  background-image: linear-gradient(to right, rgb(236 216 255), #b13eff 58%, #ffffff 59%);
   background-size: 200% 100%;
   background-position: -100%;
   display: inline-block;
@@ -276,6 +276,13 @@ span.scores {
   span.is-pulled-right,
   span.is-pulled-left {
     font-size: 1vh;
+  }
+  .quick-nav {
+    float: right;
+    margin-top: 1.5rem !important;
+  }
+  .first.column.is-full, .second.column.is-full {
+    grid-template-columns: 16% 60% 20% !important;
   }
 
   a.h2link{

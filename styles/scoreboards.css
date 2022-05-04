@@ -46,3 +46,10 @@ p.score-big, span.score-big {
     font-weight: bold;
     color: magenta;
 }
+
+@media only screen and (max-width: 700px) {
+ 
+    .first.column.is-full, .second.column.is-full {
+      grid-template-columns: 16% 60% 20% !important;
+    }
+    }

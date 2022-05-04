@@ -19,9 +19,12 @@ const Layout = ({ children }) => {
             <Head>
                 <title> {router.pathname.toUpperCase()} Page</title>
             </Head>
+            <div className="topcontainer">
+            <QuickNav/>
             <Navbar />
-
-           <QuickNav/>
+         
+            </div>
+       
             <div className="maincontainer">
                 {children}
             </div>
