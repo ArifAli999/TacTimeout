@@ -10,7 +10,7 @@ import '../styles/quicknav.css';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Layout>
+    <Layout className=''>
     
        <Component {...pageProps} />
     </Layout>
