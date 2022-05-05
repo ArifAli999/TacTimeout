@@ -36,7 +36,7 @@ function Valorant({ dotres }) {
 
 export async function getServerSideProps() {
 
-    const dotaresult = await fetch(`https://api.pandascore.co/matches/upcoming?filter[videogame]=valorant&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
+    const dotaresult = await fetch(`https://api.pandascore.co/matches/upcoming?filter[videogame]=valorant&token=${process.env.TOKEN}`);
 
 
     const data = await dotaresult.json();

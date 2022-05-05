@@ -165,7 +165,7 @@ const PastCS = (props) => {
   export async function getServerSideProps({ query }) {
     const page = query.page || 1; //if page empty we request the first page
     const response = await fetch(
-      `https://api.pandascore.co/matches/past?sort=&page=${page}&per_page=10&filter[videogame]=cs-go&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`
+      `https://api.pandascore.co/matches/past?sort=&page=${page}&per_page=10&filter[videogame]=cs-go&token=${process.env.TOKEN}`
     );
   
     const data = await response.json();

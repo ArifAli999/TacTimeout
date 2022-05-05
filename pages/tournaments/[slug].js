@@ -8,7 +8,7 @@ import Router from 'next/router';
 
 
 export const getStaticPaths = async () => {
-  const res = await fetch(`https://api.pandascore.co/tournaments/?sort=&page=1&per_page=5&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
+  const res = await fetch(`https://api.pandascore.co/tournaments/?sort=&page=1&per_page=5&token=${process.env.TOKEN}`);
   const data = await res.json();
 
   const paths = data.map(o => {
@@ -25,8 +25,8 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const slug = context.params.slug;
-  const res = await fetch(`https://api.pandascore.co/tournaments/${slug}?&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
-  const teams = await fetch(`https://api.pandascore.co/tournaments/${slug}/teams?&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`)
+  const res = await fetch(`https://api.pandascore.co/tournaments/${slug}?&token=${process.env.TOKEN}`);
+  const teams = await fetch(`https://api.pandascore.co/tournaments/${slug}/teams?&token=${process.env.TOKEN}`)
   const data2 = await teams.json();
   const data = await res.json();
 

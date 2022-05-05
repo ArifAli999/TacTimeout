@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 //PARAMS SETTINGS
 export const getStaticPaths = async () => {
-  const res = await fetch(`https://api.pandascore.co/matches/upcoming?sort=&page=1&per_page=50&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
+  const res = await fetch(`https://api.pandascore.co/matches/upcoming?sort=&page=1&per_page=50&token=${process.env.TOKEN}`);
   const data = await res.json();
 
   const paths = data.map(o => {
@@ -22,8 +22,8 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const slug = context.params.slug;
-  const res = await fetch(`https://api.pandascore.co/matches/upcoming?search[slug]=${slug}&token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0 `);
-  const players = await fetch(`https://api.pandascore.co/matches/${slug}/opponents?token=a1trG0pytDA2N0RXkJVlWqA6MOb2aY8ii9szwMze-OabnW9QPu0`);
+  const res = await fetch(`https://api.pandascore.co/matches/upcoming?search[slug]=${slug}&token=${process.env.TOKEN}`);
+  const players = await fetch(`https://api.pandascore.co/matches/${slug}/opponents?token=${process.env.TOKEN}`);
   const data2 = await players.json();
   const data = await res.json();
 
