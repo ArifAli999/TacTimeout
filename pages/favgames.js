@@ -46,7 +46,7 @@ function FavGames(item) {
 
 
 
-          <div className='favtboxes column is-full'>
+          <div className='favtboxes column is-full' key={q.id}>
             <Link href={'/live/' + q.slug} key={q.slug}>
               <a className="h2link" key={q.slug}>
                 {q.name}
