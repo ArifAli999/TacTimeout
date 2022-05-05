@@ -1,29 +1,51 @@
 @import "bulma/css/bulma.css";
 
-
-
-
-html,body {
-
+html,
+body {
   height: 100%;
-  background-image: linear-gradient(to right top, #ff00e6, #d300aa, #a40877, #74124c, #44132a, #361023, #290d1b, #1e0613, #2a091f, #36082f, #3e0942, #420e58) !important;
+  background-image: linear-gradient(
+    to right top,
+    #ff00e6,
+    #d300aa,
+    #a40877,
+    #74124c,
+    #44132a,
+    #361023,
+    #290d1b,
+    #1e0613,
+    #2a091f,
+    #36082f,
+    #3e0942,
+    #420e58
+  ) !important;
   background-repeat: round;
   background-attachment: fixed;
   background-size: cover;
   background: none;
   background-color: none !important;
- }
- 
-
+}
 
 #__next {
-  background-image: linear-gradient(to right top, #ff00e6, #d300aa, #a40877, #74124c, #44132a, #361023, #290d1b, #1e0613, #2a091f, #36082f, #3e0942, #420e58);
+  background-image: linear-gradient(
+    to right top,
+    #ff00e6,
+    #d300aa,
+    #a40877,
+    #74124c,
+    #44132a,
+    #361023,
+    #290d1b,
+    #1e0613,
+    #2a091f,
+    #36082f,
+    #3e0942,
+    #420e58
+  );
   background-repeat: round;
   background-attachment: fixed;
   background-size: cover;
   background-blend-mode: color-burn;
   height: auto;
-
 }
 
 .scoreBox {
@@ -74,7 +96,12 @@ a.h2link {
   color: #fff;
   transition: ease-in 0.3s opacity;
   font-weight: 600;
-  background-image: linear-gradient(to right, rgb(236 216 255), #b13eff 58%, #ffffff 59%);
+  background-image: linear-gradient(
+    to right,
+    rgb(236 216 255),
+    #b13eff 58%,
+    #ffffff 59%
+  );
   background-size: 200% 100%;
   background-position: -100%;
   display: inline-block;
@@ -281,11 +308,12 @@ span.scores {
     float: right;
     margin-top: 1.5rem !important;
   }
-  .first.column.is-full, .second.column.is-full {
+  .first.column.is-full,
+  .second.column.is-full {
     grid-template-columns: 16% 60% 20% !important;
   }
 
-  a.h2link{
+  a.h2link {
     width: 150px;
     font-size: 2vh;
   }
@@ -299,14 +327,43 @@ span.scores {
 }
 
 .tourBox.columns.is-multiline {
-  width: 38%;
+  /* width: 38%; */
   color: #fff;
-  background: #000;
+  /* background: #000; */
   margin-bottom: 3%;
   border-radius: 10px;
   margin-left: 0;
   margin-right: 0;
 }
+
+.tourboxed {
+ 
+  background: #000;
+  border-radius: 9px;
+}
+
+h2.white-bold.cs {
+  background: linear-gradient( to right, rgb(0 0 0), #ff4700 58%, #0d0101 59% );
+  color: #fff;
+  transition: ease-in 0.3s opacity;
+  font-weight: 600;
+  background-image: linear-gradient( to right, rgb(0 0 0), #ff4700 58%, #ffffff 59% );
+  background-size: 188% 119%;
+  background-position: -99%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: auto;
+}
+
+.favtboxes.column.is-full {
+  grid-template-columns: 1fr 10%;
+  padding: 1.5rem 1.3rem;
+  color: #fff;
+  font-weight: 800;
+  border-bottom: 2px solid #0c0c0c;
+  display: grid;
+}
+
 
 .maincontainer {
   margin-top: 2rem;
@@ -434,7 +491,6 @@ ul.tab-ul {
   border-color: #f41ec7;
 }
 
-
 .tabs.is-toggle li.is-active a {
   background-color: auto;
   border-color: auto;
@@ -456,18 +512,15 @@ ul.tab-ul {
   color: #fff;
 }
 
-
 button.menubtn {
   background: none;
-    border: none;
-    padding: 1rem 1rem;
-    /* width: 100px; */
-    color: #fff;
-    font-size: 2rem;
-    cursor: pointer;
+  border: none;
+  padding: 1rem 1rem;
+  /* width: 100px; */
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
 }
-
-
 
 p.tourtitle {
   color: #f316f3;
@@ -495,7 +548,6 @@ span.prize {
   opacity: 0.73;
   cursor: pointer;
   transition: ease-in 0.3s opacity;
-  
 }
 
 .column.is-full.tourInfo:hover {
@@ -510,13 +562,12 @@ p.namefull {
 }
 
 .column.tourInfoBox {
-  margin-top: 2rem!important;
+  margin-top: 2rem !important;
   background: rgb(15 17 17 / 81%);
   margin: 2%;
   border-bottom: 2px solid #ee30ee;
   padding: 0 !important;
   height: max-content;
-  
 }
 
 .imgbox {
@@ -533,7 +584,7 @@ p.namefull {
   transition: ease-in 0.3s opacity;
 }
 .imgbox:hover {
-  opacity : 1;
+  opacity: 1;
 }
 p.teamNames {
   color: #fff;
@@ -543,8 +594,6 @@ p.teamNames {
 }
 
 .tourInfoBox {
-  
-
 }
 span.touri_name {
   font-weight: bold;
@@ -603,8 +652,7 @@ img.tour-img {
   background: rgb(86 78 78 / 53%);
   border-radius: 102px;
   background-position: 20% 34%;
-      padding: 1rem;
-    
+  padding: 1rem;
 }
 
 img.tiny.img.rounded {
@@ -701,11 +749,10 @@ img.teamlogo-small {
   box-shadow: 1px 2px 8px 2px #000;
   opacity: 0.98;
   margin: 1px;
-
 }
 .imgtinycont {
-    width: 30px;
-    height: 30px;
+  width: 30px;
+  height: 30px;
 }
 
 .placehoder-img {
@@ -731,14 +778,34 @@ button.toggle-modal {
 .playerlist {
   display: grid;
 
+  grid-template-columns: 1.5fr 1.5fr 1.3fr 0fr;
+}
 
-    grid-template-columns: 1.5fr 1.5fr 1.3fr 0fr;
+span.alteredtext {
+  font-weight: bold;
+  color: #fff;
+  -webkit-font-smoothing: subpixel-antialiased;
+  width: 250px;
+  /* word-break: break-all; */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.scorebox-title-head {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8rem;
+  /* color: #fff; */
+  width: 100%;
+  align-items: center;
+  border-bottom: 2px solid #100f0f;
 }
 
 .button-cont {
-
   margin: 0 auto;
   padding: 1rem 0rem;
+  text-align: center;
 }
 
 button.loadMore {
@@ -750,7 +817,7 @@ button.loadMore {
   color: #fff;
   font-weight: bold;
   border-bottom: 4px solid #54105a;
-  opacity: .78;
+  opacity: 0.78;
   cursor: pointer;
 }
 .tourhead-cont {
@@ -801,11 +868,52 @@ button.lessbtn {
   opacity: 1;
   cursor: pointer;
 }
-button.refreshbtn:hover,  button.loadMore:hover{
+button.refreshbtn:hover,
+button.loadMore:hover {
   opacity: 1;
-  transition: ease-in .6s opacity;
+  transition: ease-in 0.6s opacity;
 }
-button.lessbtn:hover  {
-  opacity: .87;
-  transition: ease-in .6s opacity;
+button.lessbtn:hover {
+  opacity: 0.87;
+  transition: ease-in 0.6s opacity;
+}
+
+button.favbtn.is-pulled-right.hidden {
+  display: none;
+}
+
+button.favbtn:hover {
+  opacity: 1;
+  transition: ease-in 0.6s opacity;
+}
+button.favbtn {
+  float: right;
+  background: transparent;
+  margin-bottom: 0px;
+  border: 0px;
+  background: red;
+  color: #fff;
+  font-weight: bold;
+  width: 30px;
+  height: 30px;
+  border-radius: 107px;
+  padding: 0.34rem 0.3rem;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+h2.white-bold {
+  font-size: 2.3rem;
+  margin-bottom: 3rem;
+  font-weight: 800;
+  background: linear-gradient( to right, rgb(236 216 255), #b13eff 58%, #ffffff 59% );
+  color: #fff;
+  transition: ease-in 0.3s opacity;
+  font-weight: 600;
+  background-image: linear-gradient( to right, rgb(0 0 0), #9800ff 58%, #ffffff 59% );
+  background-size: 188% 119%;
+  background-position: -99%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+ 
 }

@@ -3,8 +3,24 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react';
 import { Router, withRouter } from "next/router"
 import Fallback from '../../comps/Fallback'
+import { FaHeart } from 'react-icons/fa'
+
 
 const LiveDota = (props) => {
+const [fvt, setFvt] = useState(false);
+
+var fvtgames = [];
+  function saveToLocal (id) {
+    var array = JSON.parse(window.localStorage.getItem("Slug")) || [];//the "|| []" replaces possible null from localStorage with empty array
+    var value = id;
+    if(array.indexOf(value) == -1){
+        array.push(value);
+        window.localStorage.setItem("Slug", JSON.stringify(array));
+    }
+  
+  }
+
+
     const [currentPage, setCurrentPage] = useState(1);
     const [isLoading, setLoading] = useState(false);
     const startLoading = () => setLoading(true);
@@ -21,7 +37,7 @@ const LiveDota = (props) => {
         Router.events.off("routeChangeComplete", stopLoading);
       };
     }, []);
-    React.useEffect(() => {
+  useEffect(() => {
       if(!props.games || !props.games.length) {
         backToLastPage(currentPage);
       }
@@ -44,12 +60,14 @@ const LiveDota = (props) => {
     };
   
     const backToLastPage = (page) => {
-       
+     
+      
       const currentPath = props.router.pathname;
       const currentQuery = props.router.query;
   
       if(currentPage==1 && !props.games.length) {
         <Fallback/>
+      
       }
       else {
       currentQuery.page = currentPage - 1;
@@ -58,8 +76,9 @@ const LiveDota = (props) => {
       props.router.push({
         pathname: currentPath,
         query: currentQuery,
-      });}
-      
+      });
+    }
+
       
     
 
@@ -84,12 +103,20 @@ const LiveDota = (props) => {
                     {props.games.map(q => (
                         <div className="column is-half" key={q.id}>
                             <div className='scorebox columns is-multiline'>
+                            <div className='scorebox-title-head'>
+                                  
+                            <span className='alteredtext'>{q.name}</span>
+                            <button className='favbtn is-pulled-right' onClick={()=> saveToLocal(q.slug)} key={q.id}><FaHeart key={q.slug}/></button>
+                                   
+
+                                  </div>
                                 <div className='first column is-full'>
+                                 
                                     {q.opponents.slice(0, -1).map(({ opponent }) => (
-                                          <>
+                                          <React.Fragment key={opponent.id}>
                                           
-                                          {opponent.image_url ? (<div className='imgtinycont'><img src={opponent.image_url} className="teamlogo-small"></img></div>) : (<div className='placehoder-img'></div>)}
-                                          <><div key={opponent.id} className={opponent.acronym}>
+                                          {opponent.image_url ? (<div className='imgtinycont' key={opponent.id}><img src={opponent.image_url} className="teamlogo-small"></img></div>) : (<div className='placehoder-img'></div>)}
+                                        <div  className={opponent.acronym}>
 
                                             <Link href={'/live/' + q.slug} key={q.slug}>
 
@@ -101,16 +128,16 @@ const LiveDota = (props) => {
 
                                         </div><span className='score-live is-pulled-right'>
                                                 {q.results.find((result) => result.team_id === opponent.id).score}
-                                            </span></></>
+                                            </span></React.Fragment>
 
                                     ))}
                                 </div>
                                 <div className='second column is-full'>
                                     {q.opponents.slice(-1).map(({ opponent }) => (
-                                          <>
+                                          <React.Fragment key={opponent.id}>
                                           
                                           {opponent.image_url ? (<div className='imgtinycont'><img src={opponent.image_url} className="teamlogo-small"></img></div>) : (<div className='placehoder-img'></div>)}
-                                          <><div key={opponent.id} className={opponent.acronym}>
+                                          <><div key={opponent.slug} className={opponent.acronym}>
 
                                             <Link href={'/live/' + q.slug} key={q.slug}>
 
@@ -122,7 +149,10 @@ const LiveDota = (props) => {
 
                                         </div><span className='score-live is-pulled-right'>
                                                 {q.results.find((result) => result.team_id === opponent.id).score}
-                                            </span></></>
+
+
+                                            </span>
+                                            </></React.Fragment>
 
                                     ))}
                                 </div>
@@ -151,10 +181,10 @@ const LiveDota = (props) => {
        
           <div>{content}</div><br/>
 
-        {props.games.length && (
+        {props.games.length >0 ? (
           <div className='loadmorecont'>
             <button className="loadbtn" onClick={() => paginationHandler(currentPage)}> Load More </button></div>
-          ) }
+          ) : ''}
 
       </>
     );

@@ -51,7 +51,6 @@ describe('Logo', () => {
       cy.visit('http://localhost:3000/upcoming/csgo').wait(500)
       cy.get('a.h2link').should('exist')
       cy.get('#__next').window().scrollTo('bottom')
-      cy.get(':nth-child(50) > .inner > .inner__box').should('exist')
       cy.get('.menubtn').click().wait(300)
       cy.get('.uk-offcanvas-close').click().wait(50)
       

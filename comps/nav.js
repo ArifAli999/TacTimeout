@@ -113,16 +113,7 @@ const Navbar = () => {
                                     <a className={styles.nava}>CS:GO</a>
                                     </Link></li>
 
-                                    <li className="sub-links">
-                                    <span className={router.pathname == "/upcoming/fifa" ? "is-pulled-right fifImg onn " : "is-pulled-right fifImg"}></span>
-                                <Link href="/upcoming/fifa" >
-                                   <a className={styles.nava}>Fifa</a>
-                                   </Link></li>
-
-                                   <li className="sub-links">
-                                   <span className={router.pathname == "/upcoming/dota" ? "is-pulled-right dotImg onn " : "is-pulled-right dotImg"}></span>
-                                <Link href="/upcoming/dota" >
-                                <a className={styles.nava}>Dota</a></Link></li>
+            
 
                             </ul>
                         </li>

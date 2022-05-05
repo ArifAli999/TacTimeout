@@ -78,6 +78,8 @@ const PastVal = (props) => {
   
       content = (
         <div className='container is-fluid'>
+                              <h2 class="white-bold cs">VALORANT / FINISHED </h2>
+
         <div className="columns is-multiline">
 
             {props.games.length ? (

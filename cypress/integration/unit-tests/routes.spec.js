@@ -16,7 +16,7 @@ context('Live Page Route Check ', () => {
             .then(($body) => {
                 if ($body.find('a.h2link').length) {
                     // Check if link to game slug is found, click and check if the redirect is working.
-                    cy.get(':nth-child(1) > .inner > .inner__box').should('exist')
+                    cy.get(':nth-child(1) > .scorebox > .first').should('exist')
                     .click().wait(3000);                  // wait for the dynamic page to load.
                   
                     }
@@ -44,7 +44,7 @@ context('Live Page Route Check ', () => {
             .then(($body) => {
                 if ($body.find('a.h2link').length) {
                     // Check if link to game slug is found, click and check if the redirect is working.
-                    cy.get(':nth-child(1) > .inner > .inner__box').should('exist')
+                    cy.get(':nth-child(1) > .scorebox > .first').should('exist')
                     .click().wait(3000);      
                     }
                 else {

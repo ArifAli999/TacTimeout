@@ -1,10 +1,10 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Router, withRouter } from "next/router"
 import Fallback from '../../comps/Fallback'
 
-const LiveCSGO = (props) => {
+const LiveCS = (props) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [isLoading, setLoading] = useState(false);
     const startLoading = () => setLoading(true);
@@ -21,7 +21,7 @@ const LiveCSGO = (props) => {
         Router.events.off("routeChangeComplete", stopLoading);
       };
     }, []);
-  useEffect(() => {
+    React.useEffect(() => {
       if(!props.games || !props.games.length) {
         backToLastPage(currentPage);
       }
@@ -49,9 +49,8 @@ const LiveCSGO = (props) => {
       const currentPath = props.router.pathname;
       const currentQuery = props.router.query;
   
-      if(currentPage==1 && !props.games.length) {
+      if(currentPage==1) {
         <Fallback/>
-      
       }
       else {
       currentQuery.page = currentPage - 1;
@@ -62,7 +61,6 @@ const LiveCSGO = (props) => {
         query: currentQuery,
       });
     }
-
       
     
 
@@ -80,6 +78,7 @@ const LiveCSGO = (props) => {
   
       content = (
         <div className='container is-fluid'>
+                    <h2 class="white-bold cs">CS:GO / LIVE - </h2>
         <div className="columns is-multiline">
 
             {props.games.length ? (
@@ -94,7 +93,7 @@ const LiveCSGO = (props) => {
                                           {opponent.image_url ? (<div className='imgtinycont'><img src={opponent.image_url} className="teamlogo-small"></img></div>) : (<div className='placehoder-img'></div>)}
                                           <><div key={opponent.id} className={opponent.acronym}>
 
-                                            <Link href={'/live/' + q.slug} key={q.slug}>
+                                            <Link href={'/past/' + q.slug} key={q.slug}>
 
 
                                                 <a className="h2link" key={q.slug}>
@@ -115,7 +114,7 @@ const LiveCSGO = (props) => {
                                           {opponent.image_url ? (<div className='imgtinycont'><img src={opponent.image_url} className="teamlogo-small"></img></div>) : (<div className='placehoder-img'></div>)}
                                           <><div key={opponent.id} className={opponent.acronym}>
 
-                                            <Link href={'/live/' + q.slug} key={q.slug}>
+                                            <Link href={'/past/' + q.slug} key={q.slug}>
 
 
                                                 <a className="h2link" key={q.slug}>
@@ -139,7 +138,7 @@ const LiveCSGO = (props) => {
                     ))}
                 </>) : (
 
-                <Fallback title={'Valorant'} />
+                <Fallback title={'CS:GO'} />
 
 
             )}
@@ -154,10 +153,10 @@ const LiveCSGO = (props) => {
        
           <div>{content}</div><br/>
 
-        {props.games.length >0 ? (
+        {props.games.length && (
           <div className='loadmorecont'>
             <button className="loadbtn" onClick={() => paginationHandler(currentPage)}> Load More </button></div>
-          ) : ''}
+          ) }
 
       </>
     );
@@ -177,4 +176,4 @@ const LiveCSGO = (props) => {
     };
   }
   
-  export default withRouter(LiveCSGO);
+  export default withRouter(LiveCS);
