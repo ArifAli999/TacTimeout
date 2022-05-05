@@ -78,7 +78,7 @@ const LiveCS = (props) => {
   
       content = (
         <div className='container is-fluid'>
-                    <h2 class="white-bold cs">CS:GO / LIVE - </h2>
+                    <h2 className="white-bold cs">CS:GO / LIVE - </h2>
         <div className="columns is-multiline">
 
             {props.games.length ? (

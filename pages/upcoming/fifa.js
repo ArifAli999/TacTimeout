@@ -79,7 +79,7 @@ const UpFif = (props) => {
       content = (
           
           <>
-            <h2 class="white-bold">FIFA / SOON</h2>
+            <h2 className="white-bold">FIFA / SOON</h2>
        {props.games.length >0  ? (
            
         <div className='columns is-multiline '>

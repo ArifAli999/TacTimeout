@@ -38,16 +38,7 @@ export const getStaticProps = async (context) => {
 }
 
 // MAIN RENDER FUNCTION 
-export default function UpcomingGame({ game, plays }) {
-  const [openModal, setOpenModal] = useState(false);
-  const [openModals, setOpenModals] = useState(false);
-
-  function toggleMenu() {
-    setOpenModal(!openModal)
-  }
-  function toggleMenu2() {
-    setOpenModals(!openModals)
-  }
+export default function LiveGame({ game, plays }) {
 
   useEffect(() => {
     let tabsWithContent = (function () {
@@ -86,43 +77,78 @@ export default function UpcomingGame({ game, plays }) {
       tabs[0].click();
     })();
   }, [])
+
   return (
     <div className="">
 
 
-      {game.map((g) => (
+      {game.length && game.map((g) => (
         <div className="container" key={g.id}>
+
+          
 
 
           <div className="inner-box">
             {/** Fetch team and display their corresponding score - */}
-            <div className=' scoreboards'>
-              <div className='team-one'>
-                <div className='team-name'>
+           
+            <div className='scorebord_big scoreboards'>
+            <div className='container columns is-multiline'>
+              <div className='column is-full topTeam'>
+                <div className='innerteam_cont'>
+                {g.opponents.slice(0, -1).map(({ opponent }) => (
+                    <>
 
-                  {g.opponents.slice(0, -1).map((o) =>
-                    <figure className='immage-box' key={o.id}>
-                      <img src={o.opponent.image_url} className='team-img is-rounded'></img>
-                      <figcaption key={o.opponent.id}>
-                        {o.opponent.name}</figcaption> </figure>)}
+                      {opponent.image_url ? (<div className='imgtinycont'><img src={opponent.image_url} className="teamlogo-small"></img></div>) : (<div className='placehoder-img'></div>)}
+                      <><div key={opponent.id} className='opponentBoard'>
+
+
+
+
+                        <a className="white-link" key={g.slug}>
+                          {opponent.name}
+                        </a>
+
+                        <p className='score-big'>
+                          {g.results.find((result) => result.team_id === opponent.id).score}
+                        </p>
+                      </div>
+                      
+                      </></>
+
+                  ))}
+
                 </div>
               </div>
-              <div className="scoresrn">
-                <span className="teamoneSc">1</span>
-                -
-                <span className="teamoneSc">3</span>
-              </div>
-              <div className='team-one'>
-                <div className='team-name'>
 
-                  {g.opponents.slice(-1).map((o) =>
-                    <figure className='immage-box' key={o.id}>
-                      <img src={o.opponent.image_url} className='team-img is-rounded' key={o.opponent.name}></img>
-                      <figcaption key={o.opponent.id}>
-                        {o.opponent.name}</figcaption> </figure>)}
+              <div className='column is-full topTeam'>
+                <div className='innerteam_cont'>
+                {g.opponents.slice(-1).map(({ opponent }) => (
+                    <>
+
+                      {opponent.image_url ? (<div className='imgtinycont'><img src={opponent.image_url} className="teamlogo-small"></img></div>) : (<div className='placehoder-img'></div>)}
+                      <><div key={opponent.id} className='opponentBoard'>
+
+
+
+                    
+                        <span className="white-link" key={g.slug}>
+                          {opponent.name}
+                        </span>
+                        <span className='score-big'>
+                          {g.results.find((result) => result.team_id === opponent.id).score}
+                        </span>
+                      
+                      </div>
+                      
+                      </></>
+
+                  ))}
+
                 </div>
               </div>
             </div>
+          </div>
+
 
             <div id="tabs-with-content">
               <div className="tabs is-toggle is-toggle-rounded is-centered">
@@ -148,12 +174,14 @@ export default function UpcomingGame({ game, plays }) {
                       <div className="dark alt"><span className="is-pulled-left">Tournament</span>  <span className="is-pulled-right"> {g.tournament && g.tournament.name} | </span></div>
                       <div className="dark"><span className="is-pulled-left">Series</span>  <span className="is-pulled-right"> {g.serie.full_name} | {g.serie.tier.toUpperCase()} </span></div>
                       <div className="dark alt"><span className="is-pulled-left">Teams</span>  <span className="is-pulled-right">   {g.opponents.map((o) => o.opponent.name).join(" vs ")}  </span></div>
+                      {g.winner && g.winner.name !==null ? (
+                        <div className="dark alt"><span className="is-pulled-left">Winner</span>  <span className="is-pulled-right">   {g.winner.name}  </span></div>
+                      ) : null}
+
                     </div>
                   </div>
 
                 </section>
-
-
 
                 <section className="tab-content">
                   <div className='columns is-multiline'>
@@ -161,32 +189,17 @@ export default function UpcomingGame({ game, plays }) {
                       {plays.opponents.slice(0, -1).map((y) => (
 
                         <>
-                    <div className="teamblock" key={y.id}>
-                      {y.name}
-                    <button className='toggle-modal' onClick={() => toggleMenu()}>
-                                More Info
-                              </button>
-                    </div>
+                          <div className="teamblock" key={y.id}>{y.name}</div>
                           <div className='pl'>
-                            {y.players.length ? (y.players.map((player) => (
+                            {y.players.map((player) => (
                               <>
                                 {player.name && (<div className="opp2 dark" key={y.slug} id={y.slug}>
-                                  <div key={player.id}>
-                                    {player.name.length ? 
-                                    <div key={player.slug} className="playerlist">
-                                     <div className="player-name">{player.name}</div>
-                                      {(openModal && player.last_name) ? (<div className="player-age">{player.last_name}</div>) : null}
+                                  <p key={player.id}>
+                                    {player.name ? (<span>{player.name}</span>) : (<p>Sorry, No players for this game.</p>)}
 
-                                       {(openModal && player.hometown) ? (<div className="player-age">{player.hometown}</div>) : null}
-                                       {openModal ? (<div className="player-age">{player.age}</div>) : null}
-                                      </div>
-                                      
-                                      
-                                      : <p>Sorry, No players for this game.</p>}
-
-                                  </div>
+                                  </p>
                                 </div>)}</>
-                            ))): <p className="white-fallback">No players found</p>}
+                            ))}
                           </div></>
                       ))}
                     </div>
@@ -194,38 +207,25 @@ export default function UpcomingGame({ game, plays }) {
 
                     <div className="column is-half">
                       {plays.opponents.slice(-1).map((y) => (
-
                         <>
-                    <div className="teamblock alt" key={y.id}>{y.name}
-                    <button className='toggle-modal light' onClick={() => toggleMenu2()}>
-                                More Info
-                              </button></div>
+                          <div className="teamblock alt" key={y.id}>{y.name}</div>
                           <div className='pl'>
-                            {y.players.length ? (y.players.map((player) => (
+                            {y.players.map((player) => (
                               <>
                                 {player.name && (<div className="opp2 dark" key={y.slug} id={y.slug}>
-                                  <div key={player.id}>
-                                    {player.name.length ? 
-                                    <div key={player.slug} className="playerlist">
-                                      <div className="player-name">{player.name}</div>
-                                      {(openModals && player.last_name) ? (<div className="player-age">{player.last_name}</div>) : null}
+                                  <p key={player.id}>
+                                    {player.name ? (<span>{player.name}</span>) : (<p>Sorry, No players for this game have been released.</p>)}
 
-                                    {openModals && player.hometown ? (<div className="player-age">{player.hometown}</div>) : null}
-                                    {openModals ? (<div className="player-age">{player.age}</div>) : null}
-                                    </div>
-                                    
-                                    : <p>Sorry, No players for this game.</p>}
-
-                                  </div>
+                                  </p>
                                 </div>)}</>
-                            ))): <p className="white-fallback">No players found</p>}
-                          </div></>
-                      ))}
+                            ))}
+                          </div>
+
+                        </>))}
                     </div>
 
                   </div>
                 </section>
-                
 
                 <section className="tab-content">
                   <div className="column is-full">
@@ -259,8 +259,5 @@ export default function UpcomingGame({ game, plays }) {
 
 
     </div>
-
   )
-
-  // RENDER FUNCTION END.
 }
