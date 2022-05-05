@@ -96,7 +96,7 @@ const [fvt, setFvt] = useState(false);
   
       content = (
         <div className='container is-fluid'>
-          <h2 class="white-bold">Valorant/LIVE</h2>
+          <h2 className="white-bold">Valorant/LIVE</h2>
         <div className="columns is-multiline">
 
             {props.games.length ? (
