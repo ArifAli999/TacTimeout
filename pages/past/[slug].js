@@ -94,7 +94,7 @@ export default function LiveGame({ game, plays }) {
             <div className='container columns is-multiline'>
               <div className='column is-full topTeam'>
                 <div className='innerteam_cont'>
-                {g.opponents.slice(0, -1).map(({ opponent }) => (
+                {g.opponents && g.opponents.slice(0, -1).map(({ opponent }) => (
                     <>
 
                       {opponent.image_url ? (<div className='imgtinycont'><img src={opponent.image_url} className="teamlogo-small"></img></div>) : (<div className='placehoder-img'></div>)}
@@ -121,7 +121,7 @@ export default function LiveGame({ game, plays }) {
 
               <div className='column is-full topTeam'>
                 <div className='innerteam_cont'>
-                {g.opponents.slice(-1).map(({ opponent }) => (
+                {g.opponents &&g.opponents.slice(-1).map(({ opponent }) => (
                     <>
 
                       {opponent.image_url ? (<div className='imgtinycont'><img src={opponent.image_url} className="teamlogo-small"></img></div>) : (<div className='placehoder-img'></div>)}
