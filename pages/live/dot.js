@@ -8,16 +8,38 @@ import { FaHeart } from 'react-icons/fa'
 
 const LiveDota = (props) => {
 const [fvt, setFvt] = useState(false);
+const [hide, setHide] = useState(true)
 
 var fvtgames = [];
   function saveToLocal (id) {
-    var array = JSON.parse(window.localStorage.getItem("Slug")) || [];//the "|| []" replaces possible null from localStorage with empty array
+    var array = JSON.parse(window.localStorage.getItem("Slug")) || []; //the "|| []" replaces possible null from localStorage with empty array
     var value = id;
     if(array.indexOf(value) == -1){
         array.push(value);
         window.localStorage.setItem("Slug", JSON.stringify(array));
     }
   
+  }
+
+  function backHandler(page) {
+    const currentPath = props.router.pathname;
+    const currentQuery = props.router.query;
+
+    if (currentPage == 1 && !props.games.length) {
+      setHide(false);
+
+    }
+    else {
+      currentQuery.page = currentPage - 1;
+      setCurrentPage(currentQuery.page); // THE code that breaks my code.
+
+      props.router.push({
+        pathname: currentPath,
+        query: currentQuery,
+      });
+    }
+    setHide(true);
+
   }
 
 
@@ -181,11 +203,17 @@ var fvtgames = [];
        
           <div>{content}</div><br/>
 
-        {props.games.length >0 ? (
+          <div className='buttoncntrl is-flex is-flex-wrap-wrap		is-justify-content-center	mt-6'>
+        {props.games.length > 0 ? (
           <div className='loadmorecont'>
             <button className="loadbtn" onClick={() => paginationHandler(currentPage)}> Load More </button></div>
-          ) : ''}
+        ) : ''}
 
+        {currentPage > 1 ? (
+          <div className='loadmorecont'>
+            <button className="loadbtn" onClick={() => backHandler(currentPage)}> back  </button></div>
+        ) : ''}
+      </div>
       </>
     );
   };

@@ -364,6 +364,10 @@ h2.white-bold.cs {
   display: grid;
 }
 
+.buttoncntrl {
+  gap: 2rem;
+}
+
 
 .maincontainer {
   margin-top: 2rem;

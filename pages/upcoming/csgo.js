@@ -9,7 +9,8 @@ const UpCS = (props) => {
     const [isLoading, setLoading] = useState(false);
     const startLoading = () => setLoading(true);
     const stopLoading = () => setLoading(false);
-  
+    const [hide, setHide] = useState(true)
+
     useEffect(() => {
       //After the component is mounted set router event handlers
   
@@ -54,7 +55,7 @@ const UpCS = (props) => {
       }
       else {
       currentQuery.page = currentPage - 1;
-      setCurrentPage(currentQuery.page); // THE code that breaks my code.
+      setCurrentPage(currentQuery.page);
   
       props.router.push({
         pathname: currentPath,
@@ -65,12 +66,33 @@ const UpCS = (props) => {
     
 
     };
+
+    function backHandler(page) {
+      const currentPath = props.router.pathname;
+      const currentQuery = props.router.query;
+  
+      if (currentPage == 1 && !props.games.length) {
+        setHide(false);
+  
+      }
+      else {
+        currentQuery.page = currentPage - 1;
+        setCurrentPage(currentQuery.page); 
+  
+        props.router.push({
+          pathname: currentPath,
+          query: currentQuery,
+        });
+      }
+      setHide(true);
+  
+    }
   
     let content;
     if (isLoading) {
       content = (
         <div>
-          <h2 className="loading-text">loading.</h2>
+          <h2 className="white-text">Loading.</h2>
         </div>
       );
     } else {
@@ -115,10 +137,18 @@ const UpCS = (props) => {
        
           <div>{content}</div><br/>
 
-        {props.games.length && (
+          <div className='buttoncntrl is-flex is-flex-wrap-wrap		is-justify-content-center	mt-6'>
+        {props.games.length > 0 ? (
           <div className='loadmorecont'>
             <button className="loadbtn" onClick={() => paginationHandler(currentPage)}> Load More </button></div>
-          ) }
+        ) : ''}
+
+        {currentPage > 1 ? (
+          <div className='loadmorecont'>
+            <button className="loadbtn" onClick={() => backHandler(currentPage)}> Back  </button></div>
+        ) : ''}
+      </div>
+          
 
       </>
     );
