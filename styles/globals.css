@@ -354,7 +354,11 @@ h2.white-bold.cs {
   -webkit-text-fill-color: transparent;
   font-size: auto;
 }
-
+button.favbtn.is-pullled-right.hide {
+  display: none !important;
+  !: pink;
+  /* font-size: 13rem !important; */
+}
 .favtboxes.column.is-full {
   grid-template-columns: 1fr 10%;
   padding: 1.5rem 1.3rem;

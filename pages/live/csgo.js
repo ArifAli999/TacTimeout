@@ -112,7 +112,7 @@ const LiveCS = (props) => {
                                           {opponent.image_url ? (<div className='imgtinycont'><img src={opponent.image_url} className="teamlogo-small"></img></div>) : (<div className='placehoder-img'></div>)}
                                           <><div key={opponent.id} className={opponent.acronym}>
 
-                                            <Link href={'/past/' + q.slug} key={q.slug}>
+                                            <Link href={'/live/' + q.slug} key={q.slug}>
 
 
                                                 <a className="h2link" key={q.slug}>
