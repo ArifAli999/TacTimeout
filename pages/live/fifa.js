@@ -7,204 +7,209 @@ import { FaHeart } from 'react-icons/fa'
 
 
 const LiveFifa = (props) => {
-const [fvt, setFvt] = useState(false);
+  const [fvt, setFvt] = useState(false);
 
-const [hide, setHide] = useState(true)
+  const [hide, setHide] = useState(true)
 
-function backHandler(page) {
-  const currentPath = props.router.pathname;
-  const currentQuery = props.router.query;
+  function backHandler(page) {
+    const currentPath = props.router.pathname;
+    const currentQuery = props.router.query;
 
-  if (currentPage == 1 && !props.games.length) {
-    setHide(false);
+    if (currentPage == 1 && !props.games.length) {
+      setHide(false);
+
+    }
+    else {
+      currentQuery.page = currentPage - 1;
+      setCurrentPage(currentQuery.page); // THE code that breaks my code.
+
+      props.router.push({
+        pathname: currentPath,
+        query: currentQuery,
+      });
+    }
+    setHide(true);
 
   }
-  else {
-    currentQuery.page = currentPage - 1;
-    setCurrentPage(currentQuery.page); // THE code that breaks my code.
+
+  function saveToLocal(slug, id) {
+    var array = JSON.parse(window.localStorage.getItem("Slug")) || [];
+    var value = slug;
+
+
+    if (array.indexOf(value) == -1) {
+      array.push(value);
+      window.localStorage.setItem("Slug", JSON.stringify(array));
+      if (typeof window !== 'undefined') {
+        document.getElementById(id).classList.add("hidden");
+      }
+    }
+
+  }
+
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [isLoading, setLoading] = useState(false);
+  const startLoading = () => setLoading(true);
+  const stopLoading = () => setLoading(false);
+
+  useEffect(() => {
+    //After the component is mounted set router event handlers
+
+    Router.events.on("routeChangeStart", startLoading);
+    Router.events.on("routeChangeComplete", stopLoading);
+
+    return () => {
+      Router.events.off("routeChangeStart", startLoading);
+      Router.events.off("routeChangeComplete", stopLoading);
+    };
+  }, []);
+  useEffect(() => {
+    if (!props.games || !props.games.length) {
+      backToLastPage(currentPage);
+    }
+  }, [props.games])
+
+  //The main change is here
+  //It will be triggered whenever `props.games` gets updated
+
+
+  const paginationHandler = (page) => {
+    const currentPath = props.router.pathname;
+    const currentQuery = props.router.query;
+    currentQuery.page = currentPage + 1;
 
     props.router.push({
       pathname: currentPath,
       query: currentQuery,
     });
-  }
-  setHide(true);
+    setCurrentPage(currentQuery.page);
+  };
 
-}
+  const backToLastPage = (page) => {
 
-  function saveToLocal (id) {
-    var array = JSON.parse(window.localStorage.getItem("Slug")) || [];//the "|| []" replaces possible null from localStorage with empty array
-    var value = id;
-    if(array.indexOf(value) == -1){
-        array.push(value);
-        window.localStorage.setItem("Slug", JSON.stringify(array));
+
+    const currentPath = props.router.pathname;
+    const currentQuery = props.router.query;
+
+    if (currentPage == 1 && !props.games.length) {
+      <Fallback />
+
     }
-  
-  }
-
-
-    const [currentPage, setCurrentPage] = useState(1);
-    const [isLoading, setLoading] = useState(false);
-    const startLoading = () => setLoading(true);
-    const stopLoading = () => setLoading(false);
-  
-    useEffect(() => {
-      //After the component is mounted set router event handlers
-  
-      Router.events.on("routeChangeStart", startLoading);
-      Router.events.on("routeChangeComplete", stopLoading);
-  
-      return () => {
-        Router.events.off("routeChangeStart", startLoading);
-        Router.events.off("routeChangeComplete", stopLoading);
-      };
-    }, []);
-  useEffect(() => {
-      if(!props.games || !props.games.length) {
-        backToLastPage(currentPage);
-      }
-    },[props.games])
-  
-    //The main change is here
-    //It will be triggered whenever `props.games` gets updated
- 
-  
-    const paginationHandler = (page) => {
-      const currentPath = props.router.pathname;
-      const currentQuery = props.router.query;
-      currentQuery.page = currentPage + 1;
-  
-      props.router.push({
-        pathname: currentPath,
-        query: currentQuery,
-      });
-      setCurrentPage(currentQuery.page);
-    };
-  
-    const backToLastPage = (page) => {
-     
-      
-      const currentPath = props.router.pathname;
-      const currentQuery = props.router.query;
-  
-      if(currentPage==1 && !props.games.length) {
-        <Fallback/>
-      
-      }
-      else {
+    else {
       currentQuery.page = currentPage - 1;
       setCurrentPage(currentQuery.page); // THE code that breaks my code.
-  
+
       props.router.push({
         pathname: currentPath,
         query: currentQuery,
       });
     }
 
-      
-    
 
-    };
-  
-    let content;
-    if (isLoading) {
-      content = (
-        <div>
-          <h2 className="white-bold">loading.</h2>
-        </div>
-      );
-    } else {
-      //Generating posts list
-  
-      content = (
-        <div className='container is-fluid'>
-          <h2 className="white-bold">FIFA / LIVE</h2>
+
+
+  };
+
+  let content;
+  if (isLoading) {
+    content = (
+      <div>
+        <h2 className="white-bold">loading.</h2>
+      </div>
+    );
+  } else {
+    //Generating posts list
+
+    content = (
+      <div className='container is-fluid'>
+        <h2 className="white-bold">FIFA / LIVE</h2>
         <div className="columns is-multiline">
 
-            {props.games.length ? (
-                <>
-                    {props.games.map(q => (
-                        <div className="column is-half" key={q.id}>
-                            <div className='scorebox columns is-multiline'>
-                            <div className='scorebox-title-head'>
-                                  
-                            <span className='alteredtext'>{q.name}</span>
-                            <button className='favbtn is-pulled-right' onClick={()=> saveToLocal(q.slug)} key={q.id}><FaHeart key={q.slug}/></button>
-                                   
+          {props.games.length ? (
+            <>
+              {props.games.map(q => (
+                <div className="column is-half" key={q.id}>
+                  <div className='scorebox columns is-multiline'>
+                    <div className='scorebox-title-head'>
 
-                                  </div>
-                                <div className='first column is-full'>
-                                 
-                                    {q.opponents.slice(0, -1).map(({ opponent }) => (
-                                          <React.Fragment key={opponent.id}>
-                                          
-                                          {opponent.image_url ? (<div className='imgtinycont' key={opponent.id}><img src={opponent.image_url} className="teamlogo-small"></img></div>) : (<div className='placehoder-img'></div>)}
-                                        <div  className={opponent.acronym}>
-
-                                            <Link href={'/live/' + q.slug} key={q.slug}>
+                      <span className='alteredtext'>{q.name}</span>
+                      <button className='favbtn is-pulled-right' onClick={() => saveToLocal(q.slug, q.id)} key={q.id} id={q.id}><FaHeart key={q.slug} /></button>
 
 
-                                                <a className="h2link" key={q.slug}>
-                                                    {opponent.name}
-                                                </a>
-                                            </Link>
+                    </div>
+                    <div className='first column is-full'>
 
-                                        </div><span className='score-live is-pulled-right'>
-                                                {q.results.find((result) => result.team_id === opponent.id).score}
-                                            </span></React.Fragment>
+                      {q.opponents.slice(0, -1).map(({ opponent }) => (
+                        <React.Fragment key={opponent.id}>
 
-                                    ))}
-                                </div>
-                                <div className='second column is-full'>
-                                    {q.opponents.slice(-1).map(({ opponent }) => (
-                                          <React.Fragment key={opponent.id}>
-                                          
-                                          {opponent.image_url ? (<div className='imgtinycont'><img src={opponent.image_url} className="teamlogo-small"></img></div>) : (<div className='placehoder-img'></div>)}
-                                          <><div key={opponent.slug} className={opponent.acronym}>
+                          {opponent.image_url ? (<div className='imgtinycont' key={opponent.id}><img src={opponent.image_url} className="teamlogo-small"></img></div>) : (<div className='placehoder-img'></div>)}
+                          <div className={opponent.acronym}>
 
-                                            <Link href={'/live/' + q.slug} key={q.slug}>
+                            <Link href={'/live/' + q.slug} key={q.slug}>
 
 
-                                                <a className="h2link" key={q.slug}>
-                                                    {opponent.name}
-                                                </a>
-                                            </Link>
+                              <a className="h2link" key={q.slug}>
+                                {opponent.name}
+                              </a>
+                            </Link>
 
-                                        </div><span className='score-live is-pulled-right'>
-                                                {q.results.find((result) => result.team_id === opponent.id).score}
+                          </div><span className='score-live is-pulled-right'>
+                            {q.results.find((result) => result.team_id === opponent.id).score}
+                          </span></React.Fragment>
 
+                      ))}
+                    </div>
+                    <div className='second column is-full'>
+                      {q.opponents.slice(-1).map(({ opponent }) => (
+                        <React.Fragment key={opponent.id}>
 
-                                            </span>
-                                            </></React.Fragment>
+                          {opponent.image_url ? (<div className='imgtinycont'><img src={opponent.image_url} className="teamlogo-small"></img></div>) : (<div className='placehoder-img'></div>)}
+                          <><div key={opponent.slug} className={opponent.acronym}>
 
-                                    ))}
-                                </div>
-
-                               
-
-
-                            </div>
-                         
-                        </div>
-                    ))}
-                </>) : (
-
-                <Fallback title={'Valorant'} />
+                            <Link href={'/live/' + q.slug} key={q.slug}>
 
 
-            )}
+                              <a className="h2link" key={q.slug}>
+                                {opponent.name}
+                              </a>
+                            </Link>
+
+                          </div><span className='score-live is-pulled-right'>
+                              {q.results.find((result) => result.team_id === opponent.id).score}
+
+
+                            </span>
+                          </></React.Fragment>
+
+                      ))}
+                    </div>
+
+
+
+
+                  </div>
+
+                </div>
+              ))}
+            </>) : (
+
+            <Fallback title={'Valorant'} />
+
+
+          )}
 
         </div>
-    </div>
-      );
-    }
-  
-    return (
-      <>
-       
-          <div>{content}</div><br/>
+      </div>
+    );
+  }
 
-          <div className='buttoncntrl is-flex is-flex-wrap-wrap		is-justify-content-center	mt-6'>
+  return (
+    <>
+
+      <div>{content}</div><br />
+
+      <div className='buttoncntrl is-flex is-flex-wrap-wrap		is-justify-content-center	mt-6'>
         {props.games.length > 0 ? (
           <div className='loadmorecont'>
             <button className="loadbtn" onClick={() => paginationHandler(currentPage)}> Load More </button></div>
@@ -214,26 +219,26 @@ function backHandler(page) {
           <div className='loadmorecont'>
             <button className="loadbtn" onClick={() => backHandler(currentPage)}> Back  </button></div>
         ) : ''}
-        </div>
+      </div>
 
-          
 
-      </>
-    );
+
+    </>
+  );
+};
+
+export async function getServerSideProps({ query }) {
+  const page = query.page || 1; //if page empty we request the first page
+  const response = await fetch(
+    `https://api.pandascore.co/matches/running?sort=&page=${page}&per_page=10&filter[videogame]=fifa&token=${process.env.TOKEN}`
+  );
+
+  const data = await response.json();
+  return {
+    props: {
+      games: data,
+    },
   };
-  
-  export async function getServerSideProps({ query }) {
-    const page = query.page || 1; //if page empty we request the first page
-    const response = await fetch(
-      `https://api.pandascore.co/matches/running?sort=&page=${page}&per_page=10&filter[videogame]=fifa&token=${process.env.TOKEN}`
-    );
-  
-    const data = await response.json();
-    return {
-      props: {
-        games: data,
-      },
-    };
-  }
-  
-  export default withRouter(LiveFifa);
+}
+
+export default withRouter(LiveFifa);

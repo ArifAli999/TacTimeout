@@ -1,3 +1,6 @@
+// API route to fetch users fvt games.
+
+
 export default async function handler(req, res) {
   const promiseArray = req.query.matchslug.map(async (slug) => {
   

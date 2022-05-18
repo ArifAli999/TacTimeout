@@ -7,6 +7,7 @@ import axios from "axios";
 import Link from 'next/link'
 import Moment from 'react-moment'
 import { FaRandom } from 'react-icons/fa'
+
 // compoennt for the home page. 
 
   function SearchTest () {  
@@ -21,7 +22,8 @@ import { FaRandom } from 'react-icons/fa'
         
     if (!data) return <p>loading</p>
   
-    // We can now calculate the number of all users
+    // get the number of items
+
     let totalUsers = 0
     for (let i = 0; i < data.length; i++) {
       totalUsers += 10
@@ -33,25 +35,25 @@ import { FaRandom } from 'react-icons/fa'
         <span onClick={() => mutate()} className="refreshbtnnspan"><button  onClick={() => mutate()} className="refreshbtn"> <FaRandom/></button></span></div>
         
 
-      {data.map((users, index) => {
+      {data.map((tours, index) => {
         // `data` is an array of each page's API response.
        
-        return users.map((user) => 
+        return tours.map((tour) => 
         (
-          <div className="column is-full tourInfo" key={user.id}>
+          <div className="column is-full tourInfo" key={tour.id}>
 
-        <div className="tour-name" key={user.id}>
-           <Link href = {'/tournaments/' + user.slug}  key={user.slug}>
-             <p className="tourtitle">{user.name}</p>
+        <div className="tour-name" key={tour.id}>
+           <Link href = {'/tournaments/' + tour.slug}  key={tour.slug}>
+             <p className="tourtitle">{tour.name}</p>
              </Link>
-          <span className="prize">{user.prizepool.slice(0,6)}</span><br/>
+          <span className="prize">{tour.prizepool.slice(0,6)}</span><br/>
         
  
             
-           <span className="timeiconn" key={user.id}>
-            <Moment format="DD MMM">{user.begin_at}</Moment>
-            {user.end_at && (
-           <> - <Moment format="DD MMM">{user.end_at}</Moment></>
+           <span className="timeiconn" key={tour.id}>
+            <Moment format="DD MMM">{tour.begin_at}</Moment>
+            {tour.end_at && (
+           <> - <Moment format="DD MMM">{tour.end_at}</Moment></>
          )}
          </span>
          </div>

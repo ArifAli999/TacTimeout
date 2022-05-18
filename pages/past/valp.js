@@ -50,8 +50,7 @@ const PastVal = (props) => {
       }
     },[props.games])
   
-    //The main change is here
-    //It will be triggered whenever `props.games` gets updated
+   
  
   
     const paginationHandler = (page) => {
