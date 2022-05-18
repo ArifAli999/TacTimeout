@@ -92,7 +92,7 @@ const UpCS = (props) => {
     if (isLoading) {
       content = (
         <div>
-          <h2 className="white-text">Loading.</h2>
+          <h2 className="white-bold">loading.</h2>
         </div>
       );
     } else {

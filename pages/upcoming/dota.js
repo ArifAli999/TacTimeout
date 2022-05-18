@@ -49,9 +49,7 @@ const UpDota = (props) => {
       }
     },[props.games])
   
-    //The main change is here
-    //It will be triggered whenever `props.games` gets updated
- 
+
   
     const paginationHandler = (page) => {
       const currentPath = props.router.pathname;
@@ -76,7 +74,7 @@ const UpDota = (props) => {
       }
       else {
       currentQuery.page = currentPage - 1;
-      setCurrentPage(currentQuery.page); // THE code that breaks my code.
+      setCurrentPage(currentQuery.page); 
   
       props.router.push({
         pathname: currentPath,

@@ -15,28 +15,14 @@ describe('Check for the fallback on the live component.', () => {
         cy.get('.maincontainer')
             .then(($body) => {
                
-                if ($body.find('.error-box').length) {
+                if ($body.find('.maincontainer').length) {
                   cy.get('.error-box').should('exist');
                 }
                 else {
-                    cy.get('.inner__box')
+                    cy.get('.maincontainer')
                 }
             })
     })
 
-    it('Should render the fallback data - ', () => {
-
-        cy.get('.maincontainer')
-            .then(($body) => {
-               cy.visit('http://localhost:3000/upcoming/ching-splash-vs-vladivostok-fm-2022-05-02')
-                if ($body.find('a.h2link').length) {
-                  cy.get(':nth-child(2) > .gamelinks').click()
-                  cy.get('p.white-fallback');
-                  
-                }
-                else {
-                    cy.get('.teamblock')
-                }
-            })
-    })
+   
 })

@@ -7,28 +7,41 @@ import { FaHeart } from 'react-icons/fa'
 
 
 const LiveVal = (props) => {
-  const [fvt, setFvt] = useState(false);
+  const [fvt, setFvt] = useState(true);
   const [hide, setHide] = useState(true)
- const [hidefvt, setHidefvt] = useState(false)
+  const [hidefvt, setHidefvt] = useState(false)
 
-
-  function saveToLocal(slug,id) {
-    var array = JSON.parse(window.localStorage.getItem("Slug")) || [];//the "|| []" replaces possible null from localStorage with empty array
+  function saveToLocal(slug, id) {
+    var array = JSON.parse(window.localStorage.getItem("Slug")) || [];
     var value = slug;
+
+
     if (array.indexOf(value) == -1) {
       array.push(value);
-  
+
+
+
       window.localStorage.setItem("Slug", JSON.stringify(array));
+
+
       if (typeof window !== 'undefined') {
         document.getElementById(id).classList.add("hidden");
-
-        
-
       }
+
 
     }
 
   }
+
+
+  useEffect(() => {
+
+  }, [])
+
+
+
+
+
 
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -100,7 +113,7 @@ const LiveVal = (props) => {
     }
     else {
       currentQuery.page = currentPage - 1;
-      setCurrentPage(currentQuery.page); 
+      setCurrentPage(currentQuery.page);
 
       props.router.push({
         pathname: currentPath,
@@ -134,7 +147,7 @@ const LiveVal = (props) => {
                     <div className='scorebox-title-head'>
 
                       <span className='alteredtext'>{q.name}</span>
-                      <button className='favbtn is-pulled-right' onClick={() => saveToLocal(q.slug, q.id)} key={q.id} id= {q.id}><FaHeart /></button>
+                      <button className='favbtn is-pulled-right' onClick={() => { saveToLocal(q.slug, q.id) }} key={q.id} id={q.id}><FaHeart /></button>
 
 
                     </div>

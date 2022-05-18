@@ -16,7 +16,7 @@ context('Page data checks. ', () => {
                 if ($body.find('a.h2link').length) {
                     // Check if link to game slug is found, click and check if the redirect is working.
                     cy.request('http://localhost:3000/live/csgo');
-                    cy.get(':nth-child(1) > .inner > .inner__box').should('exist');
+                    cy.get(':nth-child(1) > .scorebox > .first > :nth-child(2) > .h2link').should('exist');
                 }
 
                 else {
@@ -28,27 +28,6 @@ context('Page data checks. ', () => {
     })
 });
 
-context('Upcoming Page Checks. ', () => {
-    beforeEach(() => {
-        cy.visit('http://localhost:3000/upcoming/csgo');
-    });
-
-    it('Test if the upcoming page is getting the data from the fetch.', () => {
-
-        cy.get('.column')
-            .then(($body) => {
-                if ($body.find('a.h2link').length) {
-                    cy.request('http://localhost:3000/upcoming/csgo');
-                    cy.get(':nth-child(1) > .inner > .inner__box').should('exist');
-                }
-
-                else {
-                    cy.get('.error-box')
-                }
-            })
-
-    })
-})
 
 context('Check if the homepage has data ', () => {
     beforeEach(() => {
@@ -63,9 +42,7 @@ context('Check if the homepage has data ', () => {
                     cy.get('.tour-name').should('exist');
                 }
 
-                else {
-                    cy.get('.error-box')
-                }
+             
             })
 
     })

@@ -93,7 +93,7 @@ const PastVal = (props) => {
     if (isLoading) {
       content = (
         <div>
-          <h2 className="loading-text">loading.</h2>
+       <h2 className="white-bold">loading.</h2>
         </div>
       );
     } else {

@@ -16,8 +16,8 @@ context('Route Check ', () => {
             .then(($body) => {
                 if ($body.find('a.h2link').length) {
                     // Check if link to game slug is found, click and check if the redirect is working.
-                    cy.get(':nth-child(1) > .inner > .inner__box').should('exist')
-                    cy.get(':nth-child(1) > .inner > .inner__box > .h2link').click().url().should('include' , '/live')
+ 
+                    cy.get(':nth-child(1) > .scorebox > .first > :nth-child(2) > .h2link').click().url().should('include' , '/live')
 
 
 

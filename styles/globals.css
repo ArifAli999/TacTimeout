@@ -337,17 +337,21 @@ span.scores {
 }
 
 .tourboxed {
- 
   background: #000;
   border-radius: 9px;
 }
 
 h2.white-bold.cs {
-  background: linear-gradient( to right, rgb(0 0 0), #ff4700 58%, #0d0101 59% );
+  background: linear-gradient(to right, rgb(0 0 0), #ff4700 58%, #0d0101 59%);
   color: #fff;
   transition: ease-in 0.3s opacity;
   font-weight: 600;
-  background-image: linear-gradient( to right, rgb(0 0 0), #ff4700 58%, #ffffff 59% );
+  background-image: linear-gradient(
+    to right,
+    rgb(0 0 0),
+    #ff4700 58%,
+    #ffffff 59%
+  );
   background-size: 188% 119%;
   background-position: -99%;
   -webkit-background-clip: text;
@@ -371,7 +375,6 @@ button.favbtn.is-pullled-right.hide {
 .buttoncntrl {
   gap: 2rem;
 }
-
 
 .maincontainer {
   margin-top: 2rem;
@@ -914,14 +917,23 @@ h2.white-bold {
   font-size: 2.3rem;
   margin-bottom: 3rem;
   font-weight: 800;
-  background: linear-gradient( to right, rgb(236 216 255), #b13eff 58%, #ffffff 59% );
+  background: linear-gradient(
+    to right,
+    rgb(236 216 255),
+    #b13eff 58%,
+    #ffffff 59%
+  );
   color: #fff;
   transition: ease-in 0.3s opacity;
   font-weight: 600;
-  background-image: linear-gradient( to right, rgb(0 0 0), #9800ff 58%, #ffffff 59% );
+  background-image: linear-gradient(
+    to right,
+    rgb(0 0 0),
+    #9800ff 58%,
+    #ffffff 59%
+  );
   background-size: 188% 119%;
   background-position: -99%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
- 
 }

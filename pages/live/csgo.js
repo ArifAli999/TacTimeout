@@ -33,7 +33,7 @@ const LiveCS = (props) => {
       const currentPath = props.router.pathname;
       const currentQuery = props.router.query;
   
-      if (currentPage == 1 && !props.games.length) {
+      if (currentPage ==- 1 && !props.games.length) {
         setHide(false);
   
       }
@@ -73,7 +73,7 @@ const LiveCS = (props) => {
       }
       else {
       currentQuery.page = currentPage - 1;
-      setCurrentPage(currentQuery.page); // THE code that breaks my code.
+      setCurrentPage(currentQuery.page); 
   
       props.router.push({
         pathname: currentPath,
@@ -133,7 +133,7 @@ const LiveCS = (props) => {
                                           {opponent.image_url ? (<div className='imgtinycont'><img src={opponent.image_url} className="teamlogo-small"></img></div>) : (<div className='placehoder-img'></div>)}
                                           <><div key={opponent.id} className={opponent.acronym}>
 
-                                            <Link href={'/past/' + q.slug} key={q.slug}>
+                                            <Link href={'/live/' + q.slug} key={q.slug}>
 
 
                                                 <a className="h2link" key={q.slug}>
